@@ -16,5 +16,6 @@ def product_add(request):
         price = request.POST.get('price','')
         amount = request.POST.get('amount','')
         type = request.POST.get('type','')
-        Product.objects.create(name=name, price=price, amount=amount, type=type).save()
-    return render(request, 'shop/product_add.html')
+        product = Product.objects.create(name=name, price=price, amount=amount, type=type)
+        product.save()
+    return render(request, 'shop/product_add.html', {'product' : product})
