@@ -4,7 +4,7 @@
 </head>
     <body>
         <h1>Product add</h1>
-        <form action = "/product_list/" method = "post">
+        <form action = "/product_add/" method = "post">
             {% csrf_token %}
             <p>Add new product:</p>
             <p>
@@ -16,6 +16,7 @@
                 Amount: <input type = "integer" name = "amount" placeholder="Product amount" >
                 <input type = "submit" value = "submit" >
             </p>
+            <p><a href = "{% url 'shop:product_list' %}">Home</a></p>
         </form> 
     </body>
 </html>
