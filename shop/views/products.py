@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.utils import timezone
-from shop.models import Product
+from django.db import models
 from django.contrib.auth.decorators import login_required
 
 def product_list(request):
