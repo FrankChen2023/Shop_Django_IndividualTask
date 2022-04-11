@@ -10,6 +10,7 @@ def product_list(request):
 # Only admin could add new product.
 # @login_required
 def product_add(request):
+    product = None
     if request.method=="POST":
         name = request.POST.get('name','')
         price = request.POST.get('price','')
