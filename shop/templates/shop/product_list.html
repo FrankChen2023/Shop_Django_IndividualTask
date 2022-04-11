@@ -8,8 +8,9 @@
         {% if products %}
         {% for product in products %}
         <tr>
+            <td>{{product.id}}</td>
             <td>{{product.name}}</td>
-            <td><b>{{product.type}}</b></td>
+            <td>{{product.type}}</td>
             <td>£{{product.price}}</td>
             <td>{{product.amount}}</td>
             <td>{{product.created_date}}</td>
