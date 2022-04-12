@@ -16,6 +16,7 @@
                 Amount: <input type = "integer" name = "amount" placeholder="Product amount" required="required">
                 <input type = "submit" value = "submit" >
             </p>
+
             {% if product %}
             <p>Success! New product has been added as below:
             <table border="1" style="text-align:center" width='60%'>
@@ -29,7 +30,6 @@
             </tr></table></p>
             {% endif %}
 
-            <p><a href = "{% url 'shop:product_list' %}">Home</a></p>
         </form> 
     </body>
 </html>
