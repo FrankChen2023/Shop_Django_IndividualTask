@@ -5,10 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     return render(request, 'shop/index.html')
 
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'shop/product_list.html', {'products' : products})
-
 def log_in(request):
     msg = 'Please enter your username and password:'
     if request.method=='POST':
