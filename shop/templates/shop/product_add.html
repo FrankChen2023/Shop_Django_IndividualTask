@@ -33,33 +33,3 @@
         </form> 
     </body>
 </html>
-
-<!-- 
-        <h2>Search:</h2>
-        <form action = "/product_edit/" method = "post">
-            {% csrf_token %}
-            <p>Enter the id number or the name of target product:
-            <input type = "radio" name = "search_option" value = "id"> ID
-            <input type = "radio" name = "search_option" value = "name"> Name
-            <input type = "text" name = "key_word">
-            <input type = "submit" value = "Search" >  
-            </p>  
-        </form> 
-
-        <h2>Result:</h2>
-        <table border="1" style="text-align:center" width='60%'>
-        <tr><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th>
-        {% if product %}
-        <tr>
-            <td>{{product.name}}</td>
-            <td><b>{{product.type}}</b></td>
-            <td>£{{product.price}}</td>
-            <td>{{product.amount}}</td>
-            <td>{{product.created_date}}</td>
-        </tr>
-        </table>
-        {% else %}
-        </table>
-        No product matches, please check your input.
-        {% endif %}
--->
