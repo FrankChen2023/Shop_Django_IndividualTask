@@ -11,7 +11,9 @@
         <a href = "{% url 'shop:payment' %}">Payment</a> 
         {% else %}
         <a href = "{% url 'shop:logout' %}">Log Out</a> 
-        </p> 
+        {% endif %}
+        </p>
+        
         {% block content %}
         {% endblock %}
     </body>
