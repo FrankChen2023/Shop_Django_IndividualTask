@@ -22,6 +22,7 @@ def product_add(request):
 
 def product_search(request):
     products = Product.objects.all()
+    key = 'name'
     if request.method=="POST":
         key = request.POST.get('key', 'name')
         target = request.POST.get('target', '')
