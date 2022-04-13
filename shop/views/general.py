@@ -30,16 +30,16 @@ def sign_up(request):
         username_check = User.objects.filter(username=username)
         if username_check:
             msg = 'Wrong! A user with that username already exists!'
-            return render(request, 'signup.html', {'msg' : msg})
+            return render(request, 'sign_up.html', {'msg' : msg})
         if username == '':
             msg = 'Wrong! Username cannot be empty!'
-            return render(request, 'signup.html', {'msg' : msg})
+            return render(request, 'sign_up.html', {'msg' : msg})
         if password1 != password2:
             msg = 'Wrong! The two password fields didn’t match!'
-            return render(request, 'signup.html', {'msg' : msg})
+            return render(request, 'sign_up.html', {'msg' : msg})
         User.objects.create_user(username=username, password=password1, email=email, address=address).save()
-        return redirect('/login/')
-    return render(request, 'signup.html')
+        return redirect('/log_in/')
+    return render(request, 'sign_up.html')
 
 def log_out(request):
     logout(request)
