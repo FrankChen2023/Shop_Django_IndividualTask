@@ -21,13 +21,13 @@ def product_add(request):
     return render(request, 'shop/product_add.html', {'product' : product})
 
 def product_search(request):
-    product = Product.objects.all()
+    products = Product.objects.all()
     if request.method=="POST":
         key = request.POST.get('key', 'name')
         target = request.POST.get('target', '')
         if key=='id':
-            product = Product.objects.filter(id=target)
+            products = Product.objects.filter(id=target)
         if key=='name':
-            product = Product.objects.filter(name__icontains=target)
-        return render(request, 'shop/product_search.html', {'product' : product})
+            products = Product.objects.filter(name__icontains=target)
+    return render(request, 'shop/product_search.html', {'products' : products})
         

@@ -18,7 +18,8 @@
         <h2>Result:</h2>
         <table border="1" style="text-align:center" width='60%'>
         <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th>
-        {% if product %}
+        {% if products %}
+        {% for product in products %}
         <tr>
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
@@ -27,6 +28,7 @@
             <td>{{product.amount}}</td>
             <td>{{product.created_date}}</td>
         </tr>
+        {% endfor %}
         </table>
         {% else %}
         </table>
