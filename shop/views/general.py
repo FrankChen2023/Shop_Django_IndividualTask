@@ -19,7 +19,7 @@ def log_in(request):
             login(request, user)
             return redirect('/')
         else:
-            msg = 'Wrong! Username or password isn't correct!'
+            msg = 'Wrong! Username or password is incorrect!'
             return render(request, 'login.html', {'msg' : msg})
     return render(request, 'login.html', {'msg': msg})
 
