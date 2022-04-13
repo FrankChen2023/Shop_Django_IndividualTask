@@ -16,8 +16,8 @@ def log_in(request):
             return redirect('/')
         else:
             msg = 'Wrong! Username or password is incorrect!'
-            return render(request, 'login.html', {'msg' : msg})
-    return render(request, 'login.html', {'msg': msg})
+            return render(request, 'log_in.html', {'msg' : msg})
+    return render(request, 'log_in.html', {'msg': msg})
 
 def sign_up(request):
     msg = 'Please enter your account details:'
