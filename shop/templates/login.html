@@ -1,0 +1,20 @@
+{% extends 'Crime/base.html' %}
+{% block content %}
+<html>
+    <head><title>Login</title></head>
+    <body>
+    <h1>User Login Page</h1>
+
+  <p>Please login, or <a href = "{% url 'shop:signup' %}">Register</a> to see this page.</p>
+  <p>{{msg}}</p>
+  <form method="POST"> 
+    {% csrf_token %}
+    <p>Username:</p>
+    <p><input type = "text" name = "username" required="required"></p>
+    <p>Password:</p>
+    <p><input type = "text" name = "password" required="required"></p>
+    <p><input type="submit" name="Login"></p>
+</form>
+    </body>
+</html>
+{% endblock %}

@@ -4,6 +4,16 @@
         <p>
         <a href = "{% url 'shop:index' %}">Home</a>
 
+        {% if user.is_staff %}
+        <a href = "{% url 'shop:product_add' %}">Add Product</a> 
+        <a href = "{% url 'shop:product_list' %}">Check List</a>
+        <a href = "{% url 'shop:logout' %}">Log Out</a> 
+        {% elif user.is_authenticated %}
+        <a href = "{% url 'shop:logout' %}">Log Out</a> 
+        {% else %}
+        <a href = "{% url 'shop:login' %}">Log In</a> 
+        {% endif %}
+
         </p>
         {% block content %}
         {% endblock %}
