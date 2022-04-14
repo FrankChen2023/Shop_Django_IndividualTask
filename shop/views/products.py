@@ -2,13 +2,13 @@ from django.shortcuts import render
 from shop.models import Product
 from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'shop/product_list.html', {'products' : products})
-    
-# Only admin could add new product.
-# @login_required
+
+
+@login_required
 def product_add(request):
     product = None
     if request.method=="POST":
