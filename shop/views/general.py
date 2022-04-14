@@ -26,7 +26,6 @@ def sign_up(request):
         password1 = request.POST.get('password1', '')
         password2 = request.POST.get('password2', '')
         email = request.POST.get('email', '')
-        address = request.POST.get('address', '')
         username_check = User.objects.filter(username=username)
         if username_check:
             msg = 'Wrong! A user with that username already exists!'
@@ -37,7 +36,7 @@ def sign_up(request):
         if password1 != password2:
             msg = 'Wrong! The two password fields didn’t match!'
             return render(request, 'sign_up.html', {'msg' : msg})
-        User.objects.create_user(username=username, password=password1, email=email, address=address).save()
+        User.objects.create_user(username=username, password=password1, email=email).save()
         return redirect('/log_in/')
     return render(request, 'sign_up.html')
 
