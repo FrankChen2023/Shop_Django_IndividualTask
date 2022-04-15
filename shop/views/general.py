@@ -14,7 +14,7 @@ def log_in(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return redirect('/')
+            return redirect('/login_success/')
         else:
             msg = 'Wrong! Username or password is incorrect!'
             return render(request, 'log_in.html', {'msg' : msg})
@@ -41,6 +41,9 @@ def sign_up(request):
         Customer.objects.create(username=username, email=email, balance=10000).save()
         return redirect('/signup_success/')
     return render(request, 'sign_up.html')
+
+def login_success(request):
+    return render(request, 'login_success.html')
 
 def signup_success(request):
     return render(request, 'signup_success.html')
