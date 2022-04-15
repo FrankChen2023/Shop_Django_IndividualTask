@@ -38,7 +38,7 @@ def sign_up(request):
             msg = 'Wrong! The two password fields didn’t match!'
             return render(request, 'sign_up.html', {'msg' : msg})
         User.objects.create_user(username=username, password=password1, email=email).save()
-        Customer.objects.create_user(username=username, password=password1, email=email, balance=10000).save()
+        Customer.objects.create(username=username, password=password1, email=email, balance=10000).save()
         return redirect('/log_in/')
     return render(request, 'sign_up.html')
 
