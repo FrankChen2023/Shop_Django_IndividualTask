@@ -47,4 +47,4 @@ def signup_success(request):
 
 def log_out(request):
     logout(request)
-    return redirect('/log_out/')
+    return render(request, 'log_out.html')
