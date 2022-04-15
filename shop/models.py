@@ -14,13 +14,12 @@ class Product(models.Model):
         return self.name, self.price, self.amount, self.type, self.created_date
 
 class Customer(models.Model):
-    name = models.TextField()
     username = models.TextField()
     email = models.TextField()
     balance = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self):
-        return self.name, self.username, self.email, self.balance
+        return self.username, self.email, self.balance
 
 class Basket(models.Model):
     username = models.TextField()
