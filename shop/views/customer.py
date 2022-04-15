@@ -25,3 +25,6 @@ def basket_add(request):
             Basket.objects.create(username=username, basketname=basketname, name=name, address=address).save()
             return redirect('/basket_success/')
     return render(request, 'shop/basket_add.html', {'msg': msg})
+
+def basket_success(request):
+    return render(request, 'shop/basket_success.html')
