@@ -24,10 +24,11 @@ class Customer(models.Model):
 class Basket(models.Model):
     username = models.TextField()
     basketname = models.TextField()
-    total_price = models.DecimalField(max_digits=8, decimal_places=2)
+    name = models.TextField(default='')
+    address = models.TextField(default='')
 
     def __str__(self):
-        return self.username, self.basketname, self.total_price
+        return self.username, self.basketname, self.name, self.address
 
 class Basket_Detail(models.Model):
     name = models.TextField()

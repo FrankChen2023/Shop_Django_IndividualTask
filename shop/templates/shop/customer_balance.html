@@ -24,7 +24,7 @@
         {% endfor %}
         </table>
         {% else %}
-        <p>Your have no current basket. Go to add one.</p>
+        <p>Your have no current basket. Go to <a href = "{% url 'shop:basket_add' %}">add</a> one.</p>
         {% endif %}
     </body>
 </html>

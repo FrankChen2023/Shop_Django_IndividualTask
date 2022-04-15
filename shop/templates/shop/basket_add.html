@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Basket edit</title>
+</head>
+    <body>
+        <h1>Create new basket</h1>
+
+        <form method="POST"> 
+        {% csrf_token %}
+        <p>Basketname:</p>
+        <p><input type = "text" name = "basketname" value = "basket1" required="required"></p>
+        <p>Consignee:</p>
+        <p><input type = "text" name = "name" required="required"></p>
+        <p>Address:</p>
+        <p><input type = "text" name = "address" required="required"></p>
+        <p><input type="submit" name="Create"></p>
+        </form>
+
+    </body>
+</html>
+{% endblock %}

@@ -39,9 +39,12 @@ def sign_up(request):
             return render(request, 'sign_up.html', {'msg' : msg})
         User.objects.create_user(username=username, password=password1, email=email).save()
         Customer.objects.create(username=username, email=email, balance=10000).save()
-        return redirect('/log_in/')
+        return redirect('/signup_success/')
     return render(request, 'sign_up.html')
+
+def signup_success(request):
+    return render(request, 'signup_success.html')
 
 def log_out(request):
     logout(request)
-    return redirect('/')
+    return redirect('/log_out/')
