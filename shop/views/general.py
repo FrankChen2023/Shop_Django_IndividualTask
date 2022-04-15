@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from shop.models import Customer
 
 def index(request):
     return render(request, 'shop/index.html')
@@ -37,6 +38,7 @@ def sign_up(request):
             msg = 'Wrong! The two password fields didn’t match!'
             return render(request, 'sign_up.html', {'msg' : msg})
         User.objects.create_user(username=username, password=password1, email=email).save()
+        Customer.objects.create_user(username=username, password=password1, email=email, balance=10000).save()
         return redirect('/log_in/')
     return render(request, 'sign_up.html')
 

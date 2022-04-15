@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Balance and Baskets</title>
+</head>
+    <body>
+        <h1>Balance & Baskets</h1>
+        <h2>Customer balance</h2>
+
+        <p>*We offer every registered account £10000.00 as initial funding.</p>
+        <p>Your available balance: <b>{{ balance }}</b>.</p>
+
+        <h2>Customer baskets</h2>
+        <p>Your baskets:</p>
+        {% if baskets %}
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>Basket</th><th>Price</th></tr>
+        {% for basket in baskets %}
+        <tr>
+            <td>{{basket.basketname}}</td>
+            <td>£{{basket.total_price}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        <p>Your have no current basket. Go to add one.</p>
+        {% endif %}
+    </body>
+</html>
+{% endblock %}
