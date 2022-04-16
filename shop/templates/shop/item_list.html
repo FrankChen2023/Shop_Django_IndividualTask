@@ -1,0 +1,32 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+    <head><title>Item list</title></head>
+    <body>
+        <h1>Item list</h1>
+
+        {% if items %}
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th></tr>
+        <tr>
+        {% for item in items %}
+            <td>{{item.username}}</td>
+            <td>{{item.basketname}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.item}}</td>
+            <td>£{{item.price}}</td>
+            <td>{{item.amount}}</td>
+            <td>£{{item.total_price}}</td>
+            <td>{{item.created_date}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        </table>
+        <p>No item in this basket.</p>
+        {% endif %}
+        
+    </body>
+</html>
+{% endblock %}

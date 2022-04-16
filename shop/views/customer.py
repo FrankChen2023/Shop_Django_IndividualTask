@@ -52,3 +52,7 @@ def item_add(request, basketname):
         total_price=item.price*item_amount).save()
         msg = 'Success! The item has been added into your basket!'
     return render(request, 'shop/item_add.html', {'msg': msg, 'products' : products})
+
+def item_list(request):
+    items = Basket_Detail.objects.all()
+    return render(request, 'shop/item_list.html', {'items' : items})

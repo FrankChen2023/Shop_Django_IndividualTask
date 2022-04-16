@@ -11,6 +11,7 @@
         {% elif user.is_authenticated %}
         <a href = "{% url 'shop:basket_add' %}">Create New Basket</a>
         <a href = "{% url 'shop:balance' %}">Balance</a>
+        <a href = "{% url 'shop:item_list' %}">Item List</a>
         <a href = "{% url 'shop:log_out' %}">Log Out</a> 
         {% else %}
         <a href = "{% url 'shop:log_in' %}">Log In</a> 
