@@ -33,7 +33,7 @@
             {% csrf_token %}
             <input type = "hidden" name = "id" value={{product.id}}>
             <input type = "number" name = "number" step="1" min="0" max={{product.amount}}>
-            <input type = "submit" id  = {{product.id}} value = "Pick" ></td></tr>
+            <input type = "submit" name = {{product.id}}  value = "Pick" ></td></tr>
         {% endfor %}
         </table>
         {% else %}
