@@ -31,10 +31,19 @@ def basket_success(request):
 
 @login_required
 def item_add(request, basketname):
+    products = Product.objects.all()
+    key = 'name'
+    if request.method=="POST" and 'key' in request.POST:
+        key = request.POST.get('key', 'name')
+        target = request.POST.get('target', '')
+        if key=='id':
+            products = Product.objects.filter(id=target)
+        if key=='name':
+            products = Product.objects.filter(name__icontains=target)
     msg = ''
     username = request.user.username
     current_basket = Basket.objects.get(username=username, basketname=basketname)
-    if request.method=='POST':
+    if request.method=='POST' and 'amount' in request.POST:
         item_id = request.POST.get('id', '')
         item_amount = request.POST.get('amount', '')
         item = Product.objects.get(id=item_id)
