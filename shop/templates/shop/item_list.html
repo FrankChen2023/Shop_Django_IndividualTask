@@ -6,8 +6,9 @@
         <h1>Item list</h1>
 
         {% if items %}
-        <table border="1" style="text-align:center" width='60%'>
-        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th></tr>
+        <table border="1" style="text-align:center" width='80%'>
+        <tr><th>Username</th><th>Basketname</th><th>Consignee</th><th>Address</th><th>Item</th>
+        <th>Price(single)</th><th>Amount</th><th>Price(total)</th><th>Date added</th></tr>
         <tr>
         {% for item in items %}
             <td>{{item.username}}</td>
