@@ -17,18 +17,20 @@ class Customer(models.Model):
     username = models.TextField()
     email = models.TextField()
     balance = models.DecimalField(max_digits=8, decimal_places=2)
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username, self.email, self.balance
+        return self.username, self.email, self.balance, self.created_date
 
 class Basket(models.Model):
     username = models.TextField()
     basketname = models.TextField()
     name = models.TextField(default='')
     address = models.TextField(default='')
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username, self.basketname, self.name, self.address
+        return self.username, self.basketname, self.name, self.address, self.created_date
 
 class Basket_Detail(models.Model):
     name = models.TextField()
@@ -39,8 +41,9 @@ class Basket_Detail(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
     amount = models.IntegerField()
+    created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name, self.username, self.basketname, self.address, 
-        self.item, self.price, self.total_price, self.amount
+        self.item, self.price, self.total_price, self.amount, self.created_date
 

@@ -20,7 +20,7 @@
         <h2>Result:</h2>
         {% if products %}
         <table border="1" style="text-align:center" width='60%'>
-        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th><th>Pick</th></tr>
         <tr>
         {% for product in products %}
             <td>{{product.id}}</td>
@@ -29,7 +29,10 @@
             <td>£{{product.price}}</td>
             <td>{{product.amount}}</td>
             <td>{{product.created_date}}</td>
-        </tr>
+        <td><form action = "/product_search/" method = "post">
+            {% csrf_token %}
+            <input type = "number" id = {{product.id}} name = "amount" step="1" min="0" max={{product.amount}}>
+            <input type = "submit" value = "Pick" ></td></tr>
         {% endfor %}
         </table>
         {% else %}

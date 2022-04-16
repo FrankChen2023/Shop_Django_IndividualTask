@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from shop.models import Product, Customer, Basket
+from shop.models import Product, Customer, Basket, Basket_Detail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -23,8 +23,23 @@ def basket_add(request):
             msg = 'Wrong! The basketname has existed in your baskets, please try another name!'
         else:
             Basket.objects.create(username=username, basketname=basketname, name=name, address=address).save()
-            return redirect('/basket_success/')
+            return redirect('/basket_success/<str:basketname>/')
     return render(request, 'shop/basket_add.html', {'msg': msg})
 
 def basket_success(request):
     return render(request, 'shop/basket_success.html')
+
+@login_required
+def item_add(request, basketname):
+    msg = ''
+    username = request.user.username
+    current_basket = Basket.objects.get(username=username, basketname=basketname)
+    if request.method=='POST':
+        item_id = request.POST.get('id', '')
+        item_amount = request.POST.get('amount', '')
+        item = Product.objects.get(id=item_id)
+        Basket_Detail.objects.create(username=username, basketname=basketname, name=current_basket.name,
+        address=current_basket.address, item=item.name, price=item.price, amount=item_amount, 
+        total_price=item.price*amount).save()
+        msg = 'Success!'
+    return render(request, 'shop/product_search.html', {'msg': msg})
