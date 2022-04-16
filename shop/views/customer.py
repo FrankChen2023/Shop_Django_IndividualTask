@@ -49,6 +49,6 @@ def item_add(request, basketname):
         item = Product.objects.get(id=item_id)
         Basket_Detail.objects.create(username=username, basketname=basketname, name=current_basket.name,
         address=current_basket.address, item=item.name, price=item.price, amount=item_amount, 
-        total_price=item.price*amount).save()
+        total_price=item.price*item_amount).save()
         msg = 'Success!'
     return render(request, 'shop/item_add.html', {'msg': msg, 'products' : products})
