@@ -31,7 +31,8 @@
             <td>{{product.created_date}}</td>
         <td><form method = "post">
             {% csrf_token %}
-            <input type = "number" id = {{product.id}} name = "amount" step="1" min="0" max={{product.amount}}>
+            <input type = "hidden" name = "id" value={{product.id}}>
+            <input type = "number" name = "amount" step="1" min="0" max={{product.amount}}>
             <input type = "submit" value = "Pick" ></td></tr>
         {% endfor %}
         </table>
