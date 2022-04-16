@@ -44,8 +44,8 @@ def item_add(request, basketname):
     username = request.user.username
     current_basket = Basket.objects.get(username=username, basketname=basketname)
     if request.method=='POST' and 'id' in request.POST:
-        item_id = request.POST.get('id', '')
-        item_amount = int(request.POST.get('amount'+item_id, '0'))
+        item_id = request.POST.get('id')
+        item_amount = int(request.POST.get('amount'))
         item = Product.objects.get(id=item_id)
         Basket_Detail.objects.create(username=username, basketname=basketname, name=current_basket.name,
         address=current_basket.address, item=item.name, price=item.price, amount=item_amount, 
