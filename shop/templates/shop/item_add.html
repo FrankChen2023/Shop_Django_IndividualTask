@@ -7,7 +7,7 @@
     <body>
         <h1>Product search</h1>
         <h2>Search:</h2>
-        <form action = "/" method = "post">
+        <form method = "post">
             {% csrf_token %}
             <p>Enter the id number or the name of target product:
             <input type = "radio" name = "key" value = "id"> ID
@@ -29,7 +29,7 @@
             <td>£{{product.price}}</td>
             <td>{{product.amount}}</td>
             <td>{{product.created_date}}</td>
-        <td><form action = "/" method = "post">
+        <td><form method = "post">
             {% csrf_token %}
             <input type = "number" id = {{product.id}} name = "amount" step="1" min="0" max={{product.amount}}>
             <input type = "submit" value = "Pick" ></td></tr>
