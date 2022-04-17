@@ -23,7 +23,7 @@
             <input type = "number" name = 'amount' step="1" min="0" max={{product.amount}}>
             <input type = "submit" value = "Pick" >
         </p>
-        <p>{{msg}}<a href="javascript:history,go(-1)"> Go back and continue shopping</a>
+        <p>{{msg}}<a href="{% url 'shop:item_add' basketname=basketname %}"> Go back and continue shopping</a>
              or<a href = "{% url 'shop:basket_detail' basketname=basketname %}"> Go to your basket and check</a></p>
     </body>
 </html>

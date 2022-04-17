@@ -61,7 +61,7 @@ def item_detail(request, basketname, id):
         total_price=item.price*item_amount).save()
         msg = 'Success! The item has been added into your basket!'
         Product.objects.filter(id=id).update(amount=product.amount-item_amount)
-    return render(request, 'shop/item_detail.html', {'product' : product, 'basketname' : basketname})
+    return render(request, 'shop/item_detail.html', {'msg' : msg, 'product' : product, 'basketname' : basketname})
 
 @login_required
 def basket_detail(request, basketname):
