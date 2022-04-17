@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Item detail</title>
+</head>
+    <body>
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th></tr>
+        <tr>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.type}}</td>
+            <td>£{{product.price}}</td>
+            <td>{{product.amount}}</td>
+            <td>{{product.created_date}}</td>
+        </tr></table>
+        <p>
+            <form method = "post">
+            {% csrf_token %}
+            <input type = "number" name = 'amount' step="1" min="0" max={{product.amount}}>
+            <input type = "submit" value = "Pick" >
+        </p>
+    </body>
+</html>

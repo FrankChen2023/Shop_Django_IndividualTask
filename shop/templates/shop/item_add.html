@@ -2,10 +2,10 @@
 {% block content %}
 <html>
 <head>
-    <title>Product search</title>
+    <title>Product list</title>
 </head>
     <body>
-        <h1>Product search</h1>
+        <h1>Product list</h1>
         <h2>Search:</h2>
         <form method = "post">
             {% csrf_token %}
@@ -21,20 +21,16 @@
         {{msg}}
         {% if products %}
         <table border="1" style="text-align:center" width='60%'>
-        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th><th>Pick</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th></tr>
         <tr>
         {% for product in products %}
             <td>{{product.id}}</td>
-            <td>{{product.name}}</td>
+            <td><b><a href = "{% url 'shop:item_detail' basketname=basketname id=product.id %}">{{product.name}}</a></b></td>
             <td>{{product.type}}</td>
             <td>£{{product.price}}</td>
             <td>{{product.amount}}</td>
             <td>{{product.created_date}}</td>
-        <td><form method = "post">
-            {% csrf_token %}
-            <input type = "hidden" name = 'id' value={{product.id}}>
-            <input type = "number" name = 'amount' step="1" min="0" max={{product.amount}}>
-            <input type = "submit" value = "Pick" ></td></tr>
+        </tr>
         {% endfor %}
         </table>
         {% else %}

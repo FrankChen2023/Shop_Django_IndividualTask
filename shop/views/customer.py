@@ -40,19 +40,24 @@ def item_add(request, basketname):
             products = Product.objects.filter(id=target)
         if key=='name':
             products = Product.objects.filter(name__icontains=target)
+    return render(request, 'shop/item_add.html', {'products' : products, 'basketname' : basketname})
+
+@login_required
+def item_list(request):
+    items = Basket_Detail.objects.all()
+    return render(request, 'shop/item_list.html', {'items' : items})
+
+@login_required
+def item_detail(request, basketname, id):
     msg = ''
+    product = Product.objects.get(id=id)
     username = request.user.username
     current_basket = Basket.objects.get(username=username, basketname=basketname)
-    if request.method=='POST' and 'id' in request.POST:
-        item_id = request.POST.get('id')
+    if request.method=='POST':
         item_amount = int(request.POST.get('amount'))
-        item = Product.objects.get(id=item_id)
+        item = Product.objects.get(id=id)
         Basket_Detail.objects.create(username=username, basketname=basketname, name=current_basket.name,
         address=current_basket.address, item=item.name, price=item.price, amount=item_amount, 
         total_price=item.price*item_amount).save()
         msg = 'Success! The item has been added into your basket!'
-    return render(request, 'shop/item_add.html', {'msg': msg, 'products' : products})
-
-def item_list(request):
-    items = Basket_Detail.objects.all()
-    return render(request, 'shop/item_list.html', {'items' : items})
+    return render(request, 'shop/item_detail.html', {'product' : product})
