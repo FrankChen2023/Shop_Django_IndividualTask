@@ -6,3 +6,4 @@
 **13th April Complete Version:fc8cceb** : Complete login signup system, with customer and admin account creation.  
 **15th April Complete Version:fcb9809** : Complete basket creation function.  
 **15th April Complete Version:6cb8b77** : Add auto skip pages after login, logout and creating new basket.  
+**16th April to 17th April Complete Version:138222e** : Function picking item into basket completes and added.    
