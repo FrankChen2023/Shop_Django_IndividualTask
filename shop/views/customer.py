@@ -60,4 +60,13 @@ def item_detail(request, basketname, id):
         address=current_basket.address, item=item.name, price=item.price, amount=item_amount, 
         total_price=item.price*item_amount).save()
         msg = 'Success! The item has been added into your basket!'
-    return render(request, 'shop/item_detail.html', {'product' : product})
+        Product.objects.filter(id=id).update(amount=product.amount-item_amount)
+    return render(request, 'shop/item_detail.html', {'product' : product, 'basketname' : basketname})
+
+@login_required
+def basket_detail(request, basketname):
+    username = request.user.username
+    basket = Basket.objects.get(username=username, basketname=basketname)
+    items = Basket_Detail.objects.filter(username=username, basketname=basketname)
+    return render(request, 'shop/basket_detail.html', {'basket' : basket, 'items' : items})
+
