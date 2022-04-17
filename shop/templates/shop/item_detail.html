@@ -17,9 +17,9 @@
             <td>{{product.created_date}}</td>
         </tr></table>
         <p>
-            Please enter the amount you want:
             <form method = "post">
             {% csrf_token %}
+            Please enter the amount you want:
             <input type = "number" name = 'amount' step="1" min="0" max={{product.amount}}>
             <input type = "submit" value = "Pick" >
         </p>

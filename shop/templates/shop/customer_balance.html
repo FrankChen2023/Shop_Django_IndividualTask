@@ -18,7 +18,7 @@
         <tr><th>Basket</th><th>Name</th><th>Address</th><th>Created Date</th></tr>
         {% for basket in baskets %}
         <tr>
-            <td>{{basket.basketname}}</td>
+            <td><a href = "{% url 'shop:basket_detail' basketname=basket.basketname %}">{{basket.basketname}}</a></td>
             <td>{{basket.name}}</td>
             <td>{{basket.address}}</td>
             <td>{{basket.created_date}}</td>
