@@ -49,7 +49,7 @@ def basket_edit(request, basketname):
         else:
             if repeat:
                 msg = 'Wrong! The basketname has existed in your baskets, please try another name!'
-            elif '/' in basketname:
+            elif '/' in basketname1:
                 msg = 'Wrong! The basketname cannot contain character "/" !'
             else:
                 Basket.objects.filter(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
