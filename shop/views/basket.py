@@ -17,11 +17,11 @@ def basket_add(request):
             msg = 'Wrong! The basketname has existed in your baskets, please try another name!'
         else:
             Basket.objects.create(username=username, basketname=basketname, name=name, address=address).save()
-            return redirect('shop:item_add', basketname=basketname)
+            return redirect('shop:basket_success', basketname=basketname)
     return render(request, 'basket/basket_add.html', {'msg': msg})
 
-def basket_success(request):
-    return render(request, 'basket/basket_success.html')
+def basket_success(request, basketname):
+    return render(request, 'basket/basket_success.html', {'basketname' : basketname})
 
 @login_required
 def basket_detail(request, basketname):
