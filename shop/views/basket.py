@@ -72,7 +72,7 @@ def basket_delete(request, id):
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
                 Basket_Detail.objects.filter(id=item.id).delete()
             return redirect('shop:/basket_delete_success/')
-    return render(request, 'basket/basket_delete.html')
+    return render(request, 'basket/basket_delete.html', {'basket' : basket})
 
 def basket_delete_success(request):
     return render(request, 'basket/basket_delete_success.html')
