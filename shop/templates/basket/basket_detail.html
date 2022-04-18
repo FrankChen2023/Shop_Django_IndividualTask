@@ -12,7 +12,7 @@
         <p><b>Address: {{basket.address}}</b></p>
         <p><b>Created date: {{basket.created_date}}</b></p>
         <p><b>Status: {{basket.status}}</b></p>
-        <a href = "{% url 'shop:basket_edit' basketname=basket.basketname %}">Edit details</a>
+        <a href = "{% url 'shop:basket_edit' id=basket.id %}">Edit details</a>
         
         <h2>Item:</h2>
         {% if items %}

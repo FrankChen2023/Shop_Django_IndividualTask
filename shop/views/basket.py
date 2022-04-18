@@ -32,10 +32,10 @@ def basket_detail(request, basketname):
     return render(request, 'basket/basket_detail.html', {'basket' : basket, 'items' : items})
 
 @login_required
-def basket_edit(request, basketname):
+def basket_edit(request, id):
     msg = ''
     username = request.user.username
-    basket = Basket.objects.get(username=username, basketname=basketname)
+    basket = Basket.objects.get(id=id)
     items = Basket_Detail.objects.filter(username=username, basketname=basketname)
     if request.method=='POST':
         basketname1 = request.POST.get('basketname', '')
@@ -43,8 +43,8 @@ def basket_edit(request, basketname):
         address1 = request.POST.get('address', '')
         repeat = Basket.objects.filter(basketname=basketname1)
         if basketname1==basket.basketname:
-            Basket.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
-            Basket_Detail.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
+            Basket.objects.filter(id=id).update(name=name1, address=address1)
+            Basket_Detail.objects.filter(username=username, basketname=basket.basketname).update(name=name1, address=address1)
             msg = 'Success! Now you can return back and check your modification.'
             basket = Basket.objects.get(username=username, basketname=basketname1)
         else:
@@ -53,8 +53,8 @@ def basket_edit(request, basketname):
             elif '/' in basketname1:
                 msg = 'Wrong! The basketname cannot contain character "/" !'
             else:
-                Basket.objects.filter(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
-                Basket_Detail.objects.filter(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
+                Basket.objects.filter(id=id).update(basketname=basketname1, name=name1, address=address1)
+                Basket_Detail.objects.filter(username=username, basketname=basket.basketname).update(basketname=basketname1, name=name1, address=address1)
                 msg = 'Success! Now you can return back and check your modification.'
                 basket = Basket.objects.get(username=username, basketname=basketname1)
     return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket})
