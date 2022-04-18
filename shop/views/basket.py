@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from shop.models import Basket, Basket_Detail
+from shop.models import Basket, Basket_Detail, Product
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -60,6 +60,7 @@ def basket_edit(request, id):
     return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket, 'id' : id})
 
 def basket_delete(request, id):
+    msg = ''
     basket = Basket.objects.get(id=id)
     judge = basket.username + '/' + basket.basketname
     if request.method=='POST':
@@ -72,7 +73,9 @@ def basket_delete(request, id):
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
                 Basket_Detail.objects.filter(id=item.id).delete()
             return redirect('shop:/basket_delete_success/')
-    return render(request, 'basket/basket_delete.html', {'basket' : basket})
+        else:
+            msg = 'Wrong type! Please confirm and type again.'
+    return render(request, 'basket/basket_delete.html', {'basket' : basket, 'msg' : msg})
 
 def basket_delete_success(request):
     return render(request, 'basket/basket_delete_success.html')
