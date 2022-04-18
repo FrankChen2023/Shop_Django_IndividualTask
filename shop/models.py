@@ -31,7 +31,7 @@ class Basket(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username, self.basketname, self.name, self.address, self.created_date
+        return self.username, self.basketname, self.name, self.address, self.status, self.created_date
 
 class Basket_Detail(models.Model):
     name = models.TextField()
@@ -39,6 +39,7 @@ class Basket_Detail(models.Model):
     basketname = models.TextField()
     address = models.TextField()
     item = models.TextField()
+    item_id = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     total_price = models.DecimalField(max_digits=8, decimal_places=2)
     amount = models.IntegerField()
@@ -46,5 +47,5 @@ class Basket_Detail(models.Model):
 
     def __str__(self):
         return self.name, self.username, self.basketname, self.address, 
-        self.item, self.price, self.total_price, self.amount, self.created_date
+        self.item, self.item_id, self.price, self.total_price, self.amount, self.created_date
 

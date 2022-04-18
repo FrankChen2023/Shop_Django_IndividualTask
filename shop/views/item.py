@@ -37,7 +37,7 @@ def item_detail(request, basketname, id):
         item_amount = int(request.POST.get('amount'))
         item = Product.objects.get(id=id)
         Basket_Detail.objects.create(username=username, basketname=basketname, name=current_basket.name,
-        address=current_basket.address, item=item.name, price=item.price, amount=item_amount, 
+        address=current_basket.address, item=item.name, item_id=id, price=item.price, amount=item_amount, 
         total_price=item.price*item_amount).save()
         msg = 'Success! The item has been added into your basket!'
         Product.objects.filter(id=id).update(amount=product.amount-item_amount)

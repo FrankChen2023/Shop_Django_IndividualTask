@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Basket delete</title>
+</head>
+    <body>
+        <h1>Basket delete</h1>
+        <p><b>Username: {{basket.username}}</b></p>
+        <p><b>basketname: {{basket.basketname}}</b></p>
+        <p><b>Consignee: {{basket.name}}</b></p>
+        <p><b>Address: {{basket.address}}</b></p>
+        <p><b>Created date: {{basket.created_date}}</b></p>
+        <p><b>Status: {{basket.status}}</b></p>
+        <p>You are deleting your basket! Are you absolutely sure?</p>
+        <p>Please type {{basket.username}}/{{basket.basketname}} to confirm:
+        <form method="POST"> 
+        {% csrf_token %}
+        <input type = "text" name = 'confirm' required="required">
+        <input type="submit" name="Delete"></form></p>
+    </body>
+</html>

@@ -57,4 +57,24 @@ def basket_edit(request, id):
                 Basket_Detail.objects.filter(username=username, basketname=basket.basketname).update(basketname=basketname, name=name, address=address)
                 msg = 'Success! Now you can return back and check your modification.'
                 basket = Basket.objects.get(username=username, basketname=basketname)
-    return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket})
+    return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket, 'id' : id})
+
+def basket_delete(request, id):
+    basket = Basket.objects.get(id=id)
+    judge = basket.username + '/' + basket.basketname
+    if request.method=='POST':
+        confirm = request.POST.get('confirm')
+        if judge==confirm:
+            Basket.objects.get(id=id).delete()
+            items = Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname)
+            for item in items:
+                product = Product.objects.filter(id=item.item_id)
+                Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
+                Basket_Detail.objects.filter(id=item.id).delete()
+            return redirect('shop:/basket_delete_success/')
+    return render(request, 'basket/basket_delete.html')
+
+def basket_delete_success(request):
+    return render(request, 'basket/basket_delete_success.html')
+
+
