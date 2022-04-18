@@ -8,3 +8,5 @@
 **15th April Complete Version:6cb8b77** : Add auto skip pages after login, logout and creating new basket.  
 **16th April to 17th April Complete Version:132282e** : Function picking item into basket completes and added.    
 **17th April Complete Version:755093a** : Basket details function added, and rebuild the structure of code work (more clear classification).  
+**18th April Complete Version:44e7a76** : A url link represents success page with auto-jump function added after creating new basket.  
+**18th April Complete Version:640e09c** : Add filter with type condition to item_add and product_search pages.  
