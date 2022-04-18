@@ -69,7 +69,7 @@ def basket_delete(request, id):
             Basket.objects.get(id=id).delete()
             items = Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname)
             for item in items:
-                product = Product.objects.filter(id=item.item_id)
+                product = Product.objects.get(id=item.item_id)
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
                 Basket_Detail.objects.filter(id=item.id).delete()
             return redirect('shop:/basket_delete_success/')

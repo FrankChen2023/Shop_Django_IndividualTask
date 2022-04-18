@@ -13,7 +13,7 @@
         <p><b>Created date: {{basket.created_date}}</b></p>
         <p><b>Status: {{basket.status}}</b></p>
         <p>You are deleting your basket! Are you absolutely sure?</p>
-        <p>Please type {{basket.username}}/{{basket.basketname}} to confirm:
+        <p>Please type <b>{{basket.username}}/{{basket.basketname}}</b> to confirm:
         <form method="POST"> 
         {% csrf_token %}
         <input type = "text" name = 'confirm' required="required">
