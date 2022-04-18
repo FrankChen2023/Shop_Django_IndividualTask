@@ -11,9 +11,9 @@
         {% csrf_token %}
         <b><p>Username: {{basket.username}}</p>
         <p>Status: {{basket.status}}</p>
-        <p>Basketname: <input type = "text" name = "basketname" value = {{basket.basketname}} required="required"></p>
-        <p>Consignee: <input type = "text" name = "name" value = {{basket.name}} required="required"></p>
-        <p>Address: <input type = "text" name = "address" value = {{basket.address}} required="required"></p>
+        <p>Basketname: <input type = "text" name = "basketname" value = "{{basket.basketname}}" required="required"></p>
+        <p>Consignee: <input type = "text" name = "name" value = "{{basket.name}}" required="required"></p>
+        <p>Address: <input type = "text" name = "address" value = "{{basket.address}}" required="required"></p>
         <p><input type="submit" name="Modify"></p></b>
         </form>
         <p>{{msg}}</p>
