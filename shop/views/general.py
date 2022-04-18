@@ -31,9 +31,6 @@ def sign_up(request):
         if username_check:
             msg = 'Wrong! A user with that username already exists!'
             return render(request, 'sign_up.html', {'msg' : msg})
-        if username == '':
-            msg = 'Wrong! Username cannot be empty!'
-            return render(request, 'sign_up.html', {'msg' : msg})
         if password1 != password2:
             msg = 'Wrong! The two password fields didn’t match!'
             return render(request, 'sign_up.html', {'msg' : msg})
