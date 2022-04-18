@@ -21,7 +21,7 @@ def basket_add(request):
         else:
             Basket.objects.create(username=username, basketname=basketname, name=name, address=address).save()
             judge = 1
-    return render(request, 'basket/basket_add.html', {'msg': msg, 'judge' : judge})
+    return render(request, 'basket/basket_add.html', {'msg': msg, 'basketname' : basketname, 'judge' : judge})
 
 @login_required
 def basket_detail(request, basketname):
