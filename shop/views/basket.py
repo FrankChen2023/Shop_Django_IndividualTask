@@ -38,13 +38,13 @@ def basket_edit(request, basketname):
     basket = Basket.objects.get(username=username, basketname=basketname)
     items = Basket_Detail.objects.filter(username=username, basketname=basketname)
     if request.method=='POST':
-        basketname = request.POST.get('basketname', '')
-        name = request.POST.get('name', '')
-        address = request.POST.get('address', '')
-        repeat = Basket.objects.filter(basketname=basketname)
+        basketname1 = request.POST.get('basketname', '')
+        name1 = request.POST.get('name', '')
+        address1 = request.POST.get('address', '')
+        repeat = Basket.objects.filter(basketname=basketname1)
         if basketname==basket.basketname:
-            basket.update(name=name, address=address)
-            items.update(name=name, address=address)
+            Basket.objects.get(username=username, basketname=basketname).update(name=name1, address=address1)
+            Basket_Detail.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
             msg = 'Success! Now you can return back and check your modification.'
         else:
             if repeat:
@@ -52,8 +52,8 @@ def basket_edit(request, basketname):
             elif '/' in basketname:
                 msg = 'Wrong! The basketname cannot contain character "/" !'
             else:
-                basket.update(basketname=basketname, name=name, address=address)
-                items.update(basketname=basketname, name=name, address=address)
+                Basket.objects.get(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
+                Basket_Detail.objects.filter(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
                 msg = 'Success! Now you can return back and check your modification.'
-    basket = Basket.objects.get(username=username, basketname=basketname)
+    basket = Basket.objects.get(username=username, basketname=basketname1)
     return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket})
