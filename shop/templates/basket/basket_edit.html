@@ -9,11 +9,11 @@
         <p>Please modify the basket details:</p>
         <form method="POST"> 
         {% csrf_token %}
-        <p>Username: <input type = "text" readonly="readonly" name = "username" value = basket.username required="required"></p>
-        <p>Status: <input type = "text" readonly="readonly" name = "status" value = basket.status required="required"></p>
-        <p>Basketname: <input type = "text" name = "basketname" value = basket.basketname required="required"></p>
-        <p>Consignee: <input type = "text" name = "name" value = basket.name required="required"></p>
-        <p>Address: <input type = "text" name = "address" value = basket.address required="required"></p>
+        <p>Username: <input type = "text" readonly="readonly" name = "username" value = {{basket.username}} required="required"></p>
+        <p>Status: <input type = "text" readonly="readonly" name = "status" value = {{basket.status}} required="required"></p>
+        <p>Basketname: <input type = "text" name = "basketname" value = {{basket.basketname}} required="required"></p>
+        <p>Consignee: <input type = "text" name = "name" value = {{basket.name}} required="required"></p>
+        <p>Address: <input type = "text" name = "address" value = {{basket.address}} required="required"></p>
         <p><input type="submit" name="Modify"></p>
         </form>
         <p>{{msg}}</p>
