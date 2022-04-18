@@ -27,6 +27,7 @@ class Basket(models.Model):
     basketname = models.TextField()
     name = models.TextField(default='')
     address = models.TextField(default='')
+    status = models.TextField(default='unpaid')
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
