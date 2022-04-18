@@ -42,7 +42,7 @@ def basket_edit(request, basketname):
         name1 = request.POST.get('name', '')
         address1 = request.POST.get('address', '')
         repeat = Basket.objects.filter(basketname=basketname1)
-        if basketname==basket.basketname:
+        if basketname1==basket.basketname:
             Basket.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
             Basket_Detail.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
             msg = 'Success! Now you can return back and check your modification.'
