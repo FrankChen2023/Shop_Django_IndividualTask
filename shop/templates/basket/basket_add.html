@@ -21,7 +21,7 @@
         {{msg}}
         {% if judge %}
         Success! Go to <a href = "{% url 'shop:item_add' basketname=basketname %}">product list</a> to pick what you want.</p>
-
+        {% endif %}
     </body>
 </html>
 {% endblock %}
