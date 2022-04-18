@@ -55,4 +55,4 @@ def basket_edit(request, basketname):
                 basket.upgrate(basketname=basketname, name=name, address=address)
                 items.upgrate(basketname=basketname, name=name, address=address)
                 msg = 'Success! Now you can return back and check your modification.'
-    return render(request, 'basket/basket_edit.html', {'msg': msg, 'basketname' : basketname})
+    return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket})
