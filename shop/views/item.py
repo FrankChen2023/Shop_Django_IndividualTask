@@ -10,11 +10,14 @@ def item_add(request, basketname):
     if request.method=="POST":
         try:
             key = request.POST.get('key', 'name')
+            type = request.POST.get('type', 'All')
             target = request.POST.get('target', '')
             if key=='id':
                 products = Product.objects.filter(id=target)
-            if key=='name':
+            if key=='name' and type=='All':
                 products = Product.objects.filter(name__icontains=target)
+            if key=='name' and type!='All':
+                products = Product.objects.filter(type=type, name__icontains=target)
         except:
             pass
     return render(request, 'item/item_add.html', {'products' : products, 'basketname' : basketname})
