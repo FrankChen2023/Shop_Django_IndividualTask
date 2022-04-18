@@ -72,7 +72,7 @@ def basket_delete(request, id):
                 product = Product.objects.get(id=item.item_id)
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
                 Basket_Detail.objects.filter(id=item.id).delete()
-            return redirect('shop:/basket_delete_success/')
+            return redirect('/basket_delete_success/')
         else:
             msg = 'Wrong type! Please confirm and type again.'
     return render(request, 'basket/basket_delete.html', {'basket' : basket, 'msg' : msg})
