@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def basket_add(request):
-    msg = 'Please modify the details of your new basket:'
+    msg = ''
+    judge = 0
     if request.method=='POST':
         username = request.user.username
         basketname = request.POST.get('basketname', '')
@@ -15,13 +16,12 @@ def basket_add(request):
         repeat = Basket.objects.filter(basketname=basketname)
         if repeat:
             msg = 'Wrong! The basketname has existed in your baskets, please try another name!'
+        elif '/' in basketname:
+            msg = 'Wrong! The basketname cannot contain character "/" !'
         else:
             Basket.objects.create(username=username, basketname=basketname, name=name, address=address).save()
-            return redirect('shop:basket_success', basketname=basketname)
-    return render(request, 'basket/basket_add.html', {'msg': msg})
-
-def basket_success(request, basketname):
-    return render(request, 'basket/basket_success.html', {'basketname' : basketname})
+            judge = 1
+    return render(request, 'basket/basket_add.html', {'msg': msg, 'judge' : judge})
 
 @login_required
 def basket_detail(request, basketname):

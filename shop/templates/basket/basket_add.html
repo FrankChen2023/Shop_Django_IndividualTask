@@ -7,7 +7,7 @@
     <body>
         <h1>Create new basket</h1>
 
-        <p>{{msg}}</p>
+        <p>Please modify the details of your new basket:</p>
         <form method="POST"> 
         {% csrf_token %}
         <p>Basketname:</p>
@@ -18,6 +18,9 @@
         <p><input type = "text" name = "address" required="required"></p>
         <p><input type="submit" name="Create"></p>
         </form>
+        {{msg}}
+        {% if judge %}
+        Success! Go to <a href = "{% url 'shop:item_add' basketname=basketname %}">product list</a> to pick what you want.</p>
 
     </body>
 </html>
