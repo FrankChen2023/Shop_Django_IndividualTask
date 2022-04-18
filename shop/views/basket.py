@@ -63,18 +63,21 @@ def basket_delete(request, id):
     msg = ''
     basket = Basket.objects.get(id=id)
     judge = basket.username + '/' + basket.basketname
-    if request.method=='POST':
-        confirm = request.POST.get('confirm')
-        if judge==confirm:
-            Basket.objects.get(id=id).delete()
-            items = Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname)
-            for item in items:
-                product = Product.objects.get(id=item.item_id)
-                Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
-                Basket_Detail.objects.filter(id=item.id).delete()
-            return redirect('/basket_delete_success/')
-        else:
-            msg = 'Wrong type! Please confirm and type again.'
+    if basket.status=='paid':
+        msg = 'Sorry, you cannot delete a paid basket order!'
+    else:
+        if request.method=='POST':
+            confirm = request.POST.get('confirm')
+            if judge==confirm:
+                Basket.objects.get(id=id).delete()
+                items = Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname)
+                for item in items:
+                    product = Product.objects.get(id=item.item_id)
+                    Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
+                    Basket_Detail.objects.filter(id=item.id).delete()
+                return redirect('/basket_delete_success/')
+            else:
+                msg = 'Wrong type! Please confirm and type again.'
     return render(request, 'basket/basket_delete.html', {'basket' : basket, 'msg' : msg})
 
 def basket_delete_success(request):
