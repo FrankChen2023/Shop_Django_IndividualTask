@@ -46,6 +46,7 @@ def basket_edit(request, basketname):
             Basket.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
             Basket_Detail.objects.filter(username=username, basketname=basketname).update(name=name1, address=address1)
             msg = 'Success! Now you can return back and check your modification.'
+            basket = Basket.objects.get(username=username, basketname=basketname1)
         else:
             if repeat:
                 msg = 'Wrong! The basketname has existed in your baskets, please try another name!'
@@ -55,4 +56,5 @@ def basket_edit(request, basketname):
                 Basket.objects.filter(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
                 Basket_Detail.objects.filter(username=username, basketname=basketname).update(basketname=basketname1, name=name1, address=address1)
                 msg = 'Success! Now you can return back and check your modification.'
+                basket = Basket.objects.get(username=username, basketname=basketname1)
     return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket})
