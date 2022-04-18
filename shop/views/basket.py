@@ -43,8 +43,8 @@ def basket_edit(request, basketname):
         address = request.POST.get('address', '')
         repeat = Basket.objects.filter(basketname=basketname)
         if basketname==basket.basketname:
-            basket.upgrate(name=name, address=address)
-            items.upgrate(name=name, address=address)
+            basket.upgrade(name=name, address=address)
+            items.upgrade(name=name, address=address)
             msg = 'Success! Now you can return back and check your modification.'
         else:
             if repeat:
@@ -52,8 +52,8 @@ def basket_edit(request, basketname):
             elif '/' in basketname:
                 msg = 'Wrong! The basketname cannot contain character "/" !'
             else:
-                basket.upgrate(basketname=basketname, name=name, address=address)
-                items.upgrate(basketname=basketname, name=name, address=address)
+                basket.upgrade(basketname=basketname, name=name, address=address)
+                items.upgrade(basketname=basketname, name=name, address=address)
                 msg = 'Success! Now you can return back and check your modification.'
     basket = Basket.objects.get(username=username, basketname=basketname)
     return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket})
