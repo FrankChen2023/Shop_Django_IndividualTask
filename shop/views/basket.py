@@ -36,7 +36,7 @@ def basket_edit(request, id):
     msg = ''
     username = request.user.username
     basket = Basket.objects.get(id=id)
-    items = Basket_Detail.objects.filter(username=username, basketname=basketname)
+    items = Basket_Detail.objects.filter(username=username, basketname=basket.basketname)
     if request.method=='POST':
         basketname = request.POST.get('basketname', '')
         name = request.POST.get('name', '')
