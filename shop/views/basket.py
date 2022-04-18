@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def basket_add(request):
     msg = ''
-    judge = 0
+    judge = None
+    basketname = None
     if request.method=='POST':
         username = request.user.username
         basketname = request.POST.get('basketname', '')
