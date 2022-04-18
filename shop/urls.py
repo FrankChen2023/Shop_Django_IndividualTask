@@ -18,6 +18,7 @@ urlpatterns = [
         path('balance/', views.customer.customer_balance, name='balance'),
         path('basket_add/', views.basket.basket_add, name='basket_add'),
         path('basket_detail/<str:basketname>/', views.basket.basket_detail, name='basket_detail'),
+        path('basket_edit/<str:basketname>/', views.basket.basket_edit, name='basket_edit'),
         path('item_list/', views.item.item_list, name='item_list'),
         path('/<str:basketname>/<int:id>/', views.item.item_detail, name='item_detail'),
 ]
