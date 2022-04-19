@@ -20,11 +20,11 @@
         {% endfor %}
         <tr><th>Total Cost</th><th></th><th></th><th>£{{sum}}</th><th></th></tr>
         </table>
-        <p><b>Your account balance: {{balance}}</b></p>
+        <p><b>Your account balance: £{{balance}}</b></p>
         {{msg}}
         <p><form method="POST"> 
         {% csrf_token %}
-        Please press<input type="button" value="Pay"> to pay your order.</p></form>
+        Please press <input type="submit" value="Pay"> to pay your order.</p></form>
     </body>
 </html>
 {% endblock %}
