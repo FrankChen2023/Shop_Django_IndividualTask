@@ -51,7 +51,7 @@ def item_edit(request, id):
     item = Basket_Detail.objects.get(id=id)
     product = Product.objects.get(id=item.item_id)
     if request.method=='POST':
-        amount = request.POST.get('amount')
+        amount = int(request.POST.get('amount'))
         Product.objects.filter(id=item.item_id).update(amount=item.amount+product.amount-amount)
         Basket_Detail.objects.filter(id=id).update(amount=amount, total_price=item.price*amount)
         msg = 'Success! Your change has been saved.'
