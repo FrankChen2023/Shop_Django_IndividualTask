@@ -104,6 +104,9 @@ def basket_payment(request, id):
             msg = 'Fail to pay! Your balance is not enough!'
     return render(request, 'basket/basket_payment.html', {'balance' : customer.balance, 'status' : basket.status, 'items' : items, 'msg' : msg, 'sum' : sum})
 
+def basket_payment_success(request):
+    return render(request, 'basket/basket_payment_success.html')
+
 
 
 
