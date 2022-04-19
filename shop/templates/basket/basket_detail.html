@@ -12,7 +12,7 @@
         <p><b>Address: {{basket.address}}</b></p>
         <p><b>Created date: {{basket.created_date}}</b></p>
         <p><b>Status: {{basket.status}}</b></p>
-        {% if basket.status='unpaid' %}
+        {% if basket.status=='unpaid' %}
         <a href = "{% url 'shop:basket_edit' id=basket.id %}">Edit details</a> | 
         <a href = "{% url 'shop:item_add' basketname=basket.basketname %}">Add items</a> | 
         <p>Click item name allows you to modify your order.</p>
@@ -33,7 +33,7 @@
         </tr>
         {% endfor %}
         </table>
-        {% elif items and basket.status='paid' %}
+        {% elif items and basket.status=='paid' %}
         <table border="1" style="text-align:center" width='60%'>
         <tr><th>Item name</th><th>Price(single)</th><th>Amount</th><th>Price(total)</th><th>Date added</th></tr>
         <tr>
