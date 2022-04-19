@@ -96,12 +96,12 @@ def basket_payment(request, id):
     for item in items:
         sum += item.total_price
     if request.method=='POST':
-        if customer.balance>=sum:
+        if sum==0:
+            msg = 'Fail to pay! Nothing in your basket!'
+        elif sum != 0 and customer.balance>=sum:
             Customer.objects.filter(username=username).update(balance=customer.balance-sum)
             Basket.objects.filter(id=id).update(status='paid')
             return redirect('/basket_payment_success/')
-        elif sum==0:
-            msg = 'Fail to pay! Nothing in your basket!'
         else:
             msg = 'Fail to pay! Your balance is not enough!'
     return render(request, 'basket/basket_payment.html', {'balance' : customer.balance, 'status' : basket.status, 'items' : items, 'msg' : msg, 'sum' : sum})
