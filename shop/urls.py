@@ -23,5 +23,6 @@ urlpatterns = [
         path('/<str:basketname>/', views.item.item_add, name='item_add'),
         path('item_list/', views.item.item_list, name='item_list'),
         path('item_edit/<int:id>', views.item.item_edit, name='item_edit'),
+        path('item_delete/<int:id>', views.item.item_delete, name='item_delete'),
         path('/<str:basketname>/<int:id>/', views.item.item_detail, name='item_detail'),
 ]

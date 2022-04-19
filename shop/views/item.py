@@ -45,6 +45,7 @@ def item_detail(request, basketname, id):
         product = Product.objects.get(id=id)
     return render(request, 'item/item_detail.html', {'msg' : msg, 'product' : product, 'basketname' : basketname})
 
+@login_required
 def item_edit(request, id):
     msg = ''
     item = Basket_Detail.objects.get(id=id)
@@ -57,3 +58,12 @@ def item_edit(request, id):
         item = Basket_Detail.objects.get(id=id)
         product = Product.objects.get(id=item.item_id)
     return render(request, 'item/item_edit.html', {'item' : item, 'product' : product})
+
+@login_required
+def item_delete(request, id):
+    item = Basket_Detail.objects.get(id=id)
+    basketname = item.basketname
+    product = Product.objects.get(id=item.item_id)
+    Product.objects.filter(id=item.item_id).update(amount=item.amount+product.amount)
+    Basket_Detail.objects.filter(id=id).delete()
+    return render(request, 'item/item_delete.html', {'basketname' : basketname})
