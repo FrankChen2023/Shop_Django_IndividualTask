@@ -99,9 +99,10 @@ def basket_payment(request, id):
         if customer.balance>=sum:
             Customer.objects.filter(username=username).update(balance=customer.balance-sum)
             Basket.objects.filter(id=id).update(status='paid')
+            return redirect('/basket_payment_success/')
         else:
             msg = 'Fail to pay! Your balance is not enough!'
-    return render(request, 'basket/basket_payment.html', {'balance' : customer.balance 'items' : items, 'msg' : msg, 'sum' : sum})
+    return render(request, 'basket/basket_payment.html', {'balance' : customer.balance, 'status' : basket.status, 'items' : items, 'msg' : msg, 'sum' : sum})
 
 
 
