@@ -15,7 +15,7 @@
         {% if basket.status == 'unpaid' %}
         <a href = "{% url 'shop:basket_edit' id=basket.id %}">Edit details</a> | 
         <a href = "{% url 'shop:item_add' basketname=basket.basketname %}">Add items</a> | 
-        
+        <a href = "{% url 'shop:basket_payment' id=basket.id %}">Make a payment</a>
         <p>Click item name allows you to modify your order.</p>
         {% else %}
         <p>You cannot modify a paid order.</p>
@@ -47,6 +47,7 @@
             <td>{{item.created_date}}</td>
         </tr>
         {% endfor %}
+        <tr><th>Total Cost</th><th></th><th></th><th>£{{sum}}</th><th></th></tr>
         </table>
         {% else %}
         <p>No item in this basket.</p>

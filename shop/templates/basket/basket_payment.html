@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Basket payment</title>
+</head>
+    <body>
+        <h1>Basket payment</h1>
+        <p>Please check your order:</p>
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>Item name</th><th>Price(single)</th><th>Amount</th><th>Price(total)</th><th>Date added</th></tr>
+        <tr>
+        {% for item in items %}
+            <td>{{item.item}}</td>
+            <td>£{{item.price}}</td>
+            <td>{{item.amount}}</td>
+            <td>£{{item.total_price}}</td>
+            <td>{{item.created_date}}</td>
+        </tr>
+        {% endfor %}
+        <tr><th>Total Cost</th><th></th><th></th><th>£{{sum}}</th><th></th></tr>
+        </table>
+        <p><b>Your account balance: {{balance}}</b></p>
+        {{msg}}
+        <p><form method="POST"> 
+        {% csrf_token %}
+        Please press<input type="button" value="Pay"> to pay your order.</p></form>
+    </body>
+</html>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from shop.models import Basket, Basket_Detail, Product
+from shop.models import Basket, Basket_Detail, Product, Customer
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -62,6 +62,7 @@ def basket_edit(request, id):
                 basket = Basket.objects.get(username=username, basketname=basketname)
     return render(request, 'basket/basket_edit.html', {'msg': msg, 'basket' : basket, 'id' : id})
 
+@login_required
 def basket_delete(request, id):
     msg = ''
     basket = Basket.objects.get(id=id)
@@ -80,7 +81,29 @@ def basket_delete(request, id):
             msg = 'Wrong type! Please confirm and type again.'
     return render(request, 'basket/basket_delete.html', {'basket' : basket, 'msg' : msg})
 
+@login_required
 def basket_delete_success(request):
     return render(request, 'basket/basket_delete_success.html')
+
+@login_required
+def basket_payment(request, id):
+    sum = 0
+    msg = ''
+    username = request.user.username
+    basket = Basket.objects.get(id=id)
+    customer = Customer.objects.get(username=username)
+    items = Basket_Detail.objects.filter(username=username, basketname=basket.basketname)
+    for item in items:
+        sum += item.total_price
+    if request.method=='POST':
+        if customer.balance>=sum:
+            Customer.objects.filter(username=username).update(balance=customer.balance-sum)
+            Basket.objects.filter(id=id).update(status='paid')
+        else:
+            msg = 'Fail to pay! Your balance is not enough!'
+    return render(request, 'basket/basket_payment.html', {'balance' : customer.balance 'items' : items, 'msg' : msg, 'sum' : sum})
+
+
+
 
 

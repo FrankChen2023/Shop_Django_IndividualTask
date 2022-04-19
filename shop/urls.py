@@ -20,6 +20,7 @@ urlpatterns = [
         path('basket_edit/<int:id>/', views.basket.basket_edit, name='basket_edit'),
         path('basket_delete/<int:id>/', views.basket.basket_delete, name='basket_delete'),
         path('basket_delete_success/', views.basket.basket_delete_success, name='basket_delete_success'),
+        path('basket_payment/<int:id>/', views.basket.basket_payment, name='basket_payment'),
         path('/<str:basketname>/', views.item.item_add, name='item_add'),
         path('item_list/', views.item.item_list, name='item_list'),
         path('item_edit/<int:id>', views.item.item_edit, name='item_edit'),
