@@ -54,3 +54,6 @@ def item_edit(request, id):
         Product.objects.filter(id=item.item_id).update(amount=item.amount+product.amount-amount)
         Basket_Detail.objects.filter(id=id).update(amount=amount, total_price=item.price*amount)
         msg = 'Success! Your change has been saved.'
+        item = Basket_Detail.objects.get(id=id)
+        product = Product.objects.get(id=item.item_id)
+    return render(request, 'item/item_edit.html', {'item' : item, 'product' : product})
