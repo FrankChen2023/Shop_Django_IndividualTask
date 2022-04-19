@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Basket item edit</title>
+</head>
+    <body>
+        <h1>Basket item edit</h1>
+        <p>Please check your orders:</p>
+        <form method="POST"> 
+        {% csrf_token %}
+        <b><p>Item id: {{item.item_id}}</p>
+        <p>Item name: {{item.item}}</p>
+        <p>Price (single): {{item.price}}</p>
+        <p>Amount: <input type = "number" name = "amount" value = "{{item.amount}}" step="1" min="0" max={{product.amount}}+{{item.amount}} required="required">
+        ({{product.amount}} on sale now)</p>
+        <p>Price (total): {{item.total_price}}</p>
+        <p>Created date: {{item.created_date}}</p></b>
+        <p><input type="submit" name="Modify">
+        Click <a href = "{% url 'shop:item_delete' id=id %}">remove</a> to remove this item from your basket.</p>
+        </form>
+        <p>{{msg}}</p>
+    </body>
+</html>
+{% endblock %}

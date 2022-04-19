@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from shop.models import Product, Basket, Basket_Detail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 @login_required
 def item_add(request, basketname):
@@ -22,7 +23,7 @@ def item_add(request, basketname):
             pass
     return render(request, 'item/item_add.html', {'products' : products, 'basketname' : basketname})
 
-@login_required
+@staff_member_required
 def item_list(request):
     items = Basket_Detail.objects.all()
     return render(request, 'item/item_list.html', {'items' : items})
@@ -44,3 +45,12 @@ def item_detail(request, basketname, id):
         product = Product.objects.get(id=id)
     return render(request, 'item/item_detail.html', {'msg' : msg, 'product' : product, 'basketname' : basketname})
 
+def item_edit(request, id):
+    msg = ''
+    item = Basket_Detail.objects.get(id=id)
+    product = Product.objects.get(id=item.item_id)
+    if request.method=='POST':
+        amount = request.POST.get('amount')
+        Product.objects.filter(id=item.item_id).update(amount=item.amount+product.amount-amount)
+        Basket_Detail.objects.filter(id=id).update(amount=amount, total_price=item.price*amount)
+        msg = 'Success! Your change has been saved.'

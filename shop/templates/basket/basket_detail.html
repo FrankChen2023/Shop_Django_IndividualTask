@@ -12,11 +12,28 @@
         <p><b>Address: {{basket.address}}</b></p>
         <p><b>Created date: {{basket.created_date}}</b></p>
         <p><b>Status: {{basket.status}}</b></p>
+        {% if basket.status='unpaid' %}
         <a href = "{% url 'shop:basket_edit' id=basket.id %}">Edit details</a> | 
         <a href = "{% url 'shop:item_add' basketname=basket.basketname %}">Add items</a> | 
-
+        <p>Click item name allows you to modify your order.</p>
+        {% else %}
+        <p>You cannot modify a paid order.</p>
+        {% endif %}
         <h2>Item:</h2>
-        {% if items %}
+        {% if items and basket.status='unpaid' %}
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>Item name</th><th>Price(single)</th><th>Amount</th><th>Price(total)</th><th>Date added</th></tr>
+        <tr>
+        {% for item in items %}
+            <td><a href = "{% url 'shop:item_edit' id=item.id %}">{{item.item}}</a></td>
+            <td>£{{item.price}}</td>
+            <td>{{item.amount}}</td>
+            <td>£{{item.total_price}}</td>
+            <td>{{item.created_date}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        {% elif items and basket.status='paid' %}
         <table border="1" style="text-align:center" width='60%'>
         <tr><th>Item name</th><th>Price(single)</th><th>Amount</th><th>Price(total)</th><th>Date added</th></tr>
         <tr>
@@ -30,7 +47,6 @@
         {% endfor %}
         </table>
         {% else %}
-        </table>
         <p>No item in this basket.</p>
         {% endif %}
     </body>

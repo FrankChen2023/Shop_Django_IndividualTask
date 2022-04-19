@@ -11,7 +11,6 @@ urlpatterns = [
         path('sign_up/', views.general.sign_up, name='sign_up'),
         path('signup_success/', views.general.signup_success, name='signup_success'),
         path('login_success/', views.general.login_success, name='login_success'),
-        path('/<str:basketname>/', views.item.item_add, name='item_add'),
         path('product_add/', views.products.product_add, name='product_add'),
         path('product_list/', views.products.product_list, name='product_list'),
         path('product_search/', views.products.product_search, name='product_search'),
@@ -21,6 +20,8 @@ urlpatterns = [
         path('basket_edit/<int:id>/', views.basket.basket_edit, name='basket_edit'),
         path('basket_delete/<int:id>/', views.basket.basket_delete, name='basket_delete'),
         path('basket_delete_success/', views.basket.basket_delete_success, name='basket_delete_success'),
+        path('/<str:basketname>/', views.item.item_add, name='item_add'),
         path('item_list/', views.item.item_list, name='item_list'),
+        path('item_edit/<int:id>', views.item.item_edit, name='item_edit'),
         path('/<str:basketname>/<int:id>/', views.item.item_detail, name='item_detail'),
 ]

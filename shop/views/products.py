@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from shop.models import Product
-from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
-@login_required
+@staff_member_required
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'product/product_list.html', {'products' : products})
 
 
-@login_required
+@staff_member_required
 def product_add(request):
     product = None
     if request.method=="POST":
