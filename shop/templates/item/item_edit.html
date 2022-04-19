@@ -11,7 +11,7 @@
         {% csrf_token %}
         <b><p>Item name: {{item.item}}</p>
         <p>Price (single): £{{item.price}}</p>
-        <p>Amount: <input type = "number" name = "amount" value = "{{item.amount}}" step="1" min="0" max={{product.amount}} required="required">
+        <p>Amount: <input type = "number" name = "amount" value = "{{item.amount}}" step="1" min="0" max={{total_amount}} required="required">
         ({{product.amount}} on sale now)</p>
         <p>Price (total): £{{item.total_price}}</p>
         <p>Created date: {{item.created_date}}</p></b>

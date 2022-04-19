@@ -50,6 +50,7 @@ def item_edit(request, id):
     msg = ''
     item = Basket_Detail.objects.get(id=id)
     product = Product.objects.get(id=item.item_id)
+    total_amount = item.amount + product.amount
     if request.method=='POST':
         amount = int(request.POST.get('amount'))
         Product.objects.filter(id=item.item_id).update(amount=item.amount+product.amount-amount)
@@ -57,7 +58,7 @@ def item_edit(request, id):
         msg = 'Success! Your change has been saved.'
         item = Basket_Detail.objects.get(id=id)
         product = Product.objects.get(id=item.item_id)
-    return render(request, 'item/item_edit.html', {'item' : item, 'product' : product})
+    return render(request, 'item/item_edit.html', {'item' : item, 'product' : product, 'total_amount' : total_amount})
 
 @login_required
 def item_delete(request, id):
