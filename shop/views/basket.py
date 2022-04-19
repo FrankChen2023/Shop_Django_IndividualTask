@@ -26,10 +26,12 @@ def basket_add(request):
 
 @login_required
 def basket_detail(request, basketname):
+    paid = 'paid'
+    unpaid = 'unpaid'
     username = request.user.username
     basket = Basket.objects.get(username=username, basketname=basketname)
     items = Basket_Detail.objects.filter(username=username, basketname=basketname)
-    return render(request, 'basket/basket_detail.html', {'basket' : basket, 'items' : items})
+    return render(request, 'basket/basket_detail.html', {'basket' : basket, 'items' : items, 'paid' : paid, 'unpaid' : unpaid})
 
 @login_required
 def basket_edit(request, id):
