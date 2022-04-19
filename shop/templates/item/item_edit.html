@@ -17,7 +17,7 @@
         <p>Price (total): {{item.total_price}}</p>
         <p>Created date: {{item.created_date}}</p></b>
         <p><input type="submit" name="Modify">
-        Click <a href = "{% url 'shop:item_delete' id=id %}">remove</a> to remove this item from your basket.</p>
+        Click <a href = "{% url 'shop:item_delete' id=item.id %}">remove</a> to remove this item from your basket.</p>
         </form>
         <p>{{msg}}</p>
     </body>
