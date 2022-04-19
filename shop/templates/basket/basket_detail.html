@@ -33,7 +33,7 @@
             <td>{{item.created_date}}</td>
         </tr>
         {% endfor %}
-        <tr><th>Total Cost</th><th></th><th></th><th>{{sum}}</th><th></th></tr>
+        <tr><th>Total Cost</th><th></th><th></th><th>£{{sum}}</th><th></th></tr>
         </table>
         {% elif items and basket.status == 'paid' %}
         <table border="1" style="text-align:center" width='60%'>
