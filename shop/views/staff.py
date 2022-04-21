@@ -48,7 +48,7 @@ def staff_customer_delete_success(request):
 
 @staff_member_required
 def staff_basket_list(request, username):
-    baskets = Basket.objects.filer(username=username)
+    baskets = Basket.objects.filter(username=username)
     return render(request, 'staff/staff_basket_list.html', {'baskets' : baskets})
 
 @staff_member_required
@@ -76,7 +76,7 @@ def staff_basket_delete(request, id):
                 product = Product.objects.get(id=item.item_id)
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
             Basket_Detail.objects.filer(username=basket.username, basketname=basket.basketname).delete()
-            Basket.objects.filer(username=basket.username, basketname=basket.basketname).delete()
+            Basket.objects.filter(username=basket.username, basketname=basket.basketname).delete()
             return redirect('/staff_basket_delete_success/', username=basket.username)
         else:
             msg = 'Wrong type! Please confirm and type again.'
@@ -88,7 +88,7 @@ def staff_basket_delete_success(request, username):
 
 @staff_member_required
 def staff_order_list(request, username, basketname):
-    items = Basket_Detail.objects.filer(username=username, basketname=basketname)
+    items = Basket_Detail.objects.filter(username=username, basketname=basketname)
     return render(request, 'staff/staff_order_list.html', {'items' : items})
 
 @staff_member_required
