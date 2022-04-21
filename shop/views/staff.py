@@ -99,7 +99,7 @@ def staff_basket_delete(request, id):
 
 @staff_member_required
 def staff_basket_delete_success(request, username):
-    return render(request, 'staff/staff_customer_delete_success.html', {'username' : username})
+    return render(request, 'staff/staff_basket_delete_success.html', {'username' : username})
 
 @staff_member_required
 def staff_order_list(request, username, basketname):
