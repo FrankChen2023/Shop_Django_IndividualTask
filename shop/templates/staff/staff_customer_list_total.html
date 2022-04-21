@@ -20,7 +20,7 @@
         <h2>Result: </h2>
         {% if customers %}
         <table border="1" style="text-align:center" width='60%'>
-        <<tr><th>ID</th><th>Username</th><th>Email</th><th>Balance</th><th>Created Date</th></tr>
+        <tr><th>ID</th><th>Username</th><th>Email</th><th>Balance</th><th>Created Date</th></tr>
         <tr>
         {% for customer in customers %}
             <td>{{customer.id}}</td>

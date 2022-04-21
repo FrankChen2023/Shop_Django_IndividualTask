@@ -11,13 +11,14 @@
         <b>
         <p>ID: {{product.id}}</p>
         <p>Name: <input type = "text" name = "name" value="{{product.name}}" required="required"></p>
-        <p>Price: <input type = "number" name = "price" value="{{product.price}}" step="0.01" min="0" max="999999.99" required="required"></p>
+        <p>Price: £ <input type = "number" name = "price" value="{{product.price}}" step="0.01" min="0" max="999999.99" required="required"></p>
         <p>Amount: <input type = "Integer" name = "amount" value="{{product.amount}}" step="1" min="1" max="9999" required="required"></p>
         Type: <select name= "type" value="{{product.type}}">
                     <option>Food</option><option>Clothes</option><option>Living</option>
                     <option>Activities</option><option>Common</option></select>
         <p>Created date: {{product.created_date}}</p>
         <p><input type="submit" name="Modify">
+        <a href = "{% url 'shop:staff_product_delete' id=product.id %}">Delete</a></p>
         <p><button onclick="history.back()">Go Back</button></p>
         </b>
         </form>

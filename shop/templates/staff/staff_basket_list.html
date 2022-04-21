@@ -17,7 +17,7 @@
             <td>{{basket.address}}</td>
             <td>{{basket.status}}</td>
             <td>{{basket.created_date}}</td>
-            <a href = "{% url 'shop:staff_basket_detail' id=basket.id %}">Edit</a>
+            <td><a href = "{% url 'shop:staff_basket_detail' id=basket.id %}">Edit</a></td>
         </tr>
         {% endfor %}
         </table>

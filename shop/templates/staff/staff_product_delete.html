@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Product delete</title>
+</head>
+    <body>
+        <h1>Product delete</h1>
+        <b>
+        <p>ID: {{product.id}}</p>
+        <p>Name: {{product.name}}</p>
+        <p>Type: {{product.type}}</p>
+        <p>Price: £{{product.price}}</p>
+        <p>Amount: {{product.amount}}</p>
+        <p>Created date: {{product.created_date}}</p>
+        </b>
+        <p>You are deleting a product, which means pull it off. Are you absolutely sure?</p>
+        <p>Please type <b>admin001/{{product.id}}</b> to confirm:
+        <form method="POST"> 
+        {% csrf_token %}
+        <input type = "text" name = 'confirm' required="required">
+        <input type="submit" name="Delete"></form></p>
+        {{msg}}
+    </body>
+</html>
+{% endblock %}
