@@ -22,7 +22,7 @@
         <tr>
         {% for basket in baskets %}
             <td>{{basket.username}}</td>
-            <td><b><a href = "{% url 'shop:staff_order_list' username=basket.username basketname=basket.basketname %}">{{basket.basketname}}</a></b></td>
+            <td><b>{{basket.basketname}}</b></td>
             <td>{{basket.name}}</td>
             <td>{{basket.address}}</td>
             <td>{{basket.status}}</td>

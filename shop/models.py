@@ -41,7 +41,7 @@ class Basket_Detail(models.Model):
     item = models.TextField()
     item_id = models.IntegerField(default=0)
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    total_price = models.DecimalField(max_digits=8, decimal_places=2)
+    total_price = models.DecimalField(max_digits=12, decimal_places=2)
     amount = models.IntegerField()
     created_date = models.DateTimeField(auto_now_add=True)
 
