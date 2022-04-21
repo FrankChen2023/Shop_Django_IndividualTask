@@ -239,6 +239,7 @@ def staff_product_delete(request, id):
     if request.method=='POST':
         confirm = request.POST.get('confirm')
         if judge==confirm:
+            Basket_Detail.objects.filter(item_id=id).delete()
             Product.objects.filter(id=id).delete()
             return redirect('/staff_product_delete_success/')
         else:

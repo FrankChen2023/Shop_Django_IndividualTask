@@ -14,7 +14,9 @@
         <p>Amount: {{product.amount}}</p>
         <p>Created date: {{product.created_date}}</p>
         </b>
-        <p>You are deleting a product, which means pull it off. Are you absolutely sure?</p>
+        <p>You are deleting a product, which means pull it off.</p>
+        <p>Once you delete a product, every order including this product will be deleted!</p>
+        <p>Are you absolutely sure?</p>
         <p>Please type <b>admin001/{{product.id}}</b> to confirm:
         <form method="POST"> 
         {% csrf_token %}
