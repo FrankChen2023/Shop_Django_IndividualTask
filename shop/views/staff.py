@@ -223,7 +223,7 @@ def staff_product_delete(request, id):
     if request.method=='POST':
         confirm = request.POST.get('confirm')
         if judge==confirm:
-            Product.objects.filer(id=id).delete()
+            Product.objects.filter(id=id).delete()
             return redirect('/staff_product_delete_success/')
         else:
             msg = 'Wrong type! Please confirm and type again.'
