@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from shop.models import Product, Customer, Basket, Basket_Detail
 from django.contrib.admin.views.decorators import staff_member_required
+from decimal import *
 
 @staff_member_required
 def admin_console(request):
