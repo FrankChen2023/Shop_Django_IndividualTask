@@ -219,7 +219,7 @@ def staff_product_detail(request, id):
 def staff_product_delete(request, id):
     msg = ''
     product = Product.objects.get(id=id)
-    judge = 'admin001' + '/' + product.id
+    judge = 'admin001' + '/' + str(product.id)
     if request.method=='POST':
         confirm = request.POST.get('confirm')
         if judge==confirm:
