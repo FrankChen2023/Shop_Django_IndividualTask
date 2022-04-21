@@ -71,8 +71,8 @@ def staff_basket_detail(request, id):
             msg = 'Wrong! The basketname is repeated in the customer baskets.'
             return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
         Basket.objects.filter(id=id).update(basketname=basketname, name=name, address=address, status=status)
+        msg = 'Success!'
     basket = Basket.objects.get(id=id)
-    msg = 'Success!'
     return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
 
 @staff_member_required
@@ -111,9 +111,9 @@ def staff_order_detail(request, id):
     total_amount = item.amount+product.amount
     if request.method=="POST":
         price = request.POST.get('price')
-        amount = request.POST.get('amount')
+        amount = int(request.POST.get('amount'))
         Product.objects.filter(id=item.item_id).update(amount=total_amount-amount)
-        Basket_Detail.objects.filter(id=id).update(price=price, amount=amount)
+        Basket_Detail.objects.filter(id=id).update(price=price, amount=amount, total_price=price*amount)
         msg = 'Success!'
     item = Basket_Detail.objects.get(id=id)
     return render(request, 'staff/staff_order_detail.html', {'item' : item, 'product' : product, 'total_amount' : total_amount, 'msg' : msg})
@@ -219,6 +219,7 @@ def staff_product_edit(request):
 
 @staff_member_required
 def staff_product_detail(request, id):
+    msg = ''
     product = Product.objects.get(id=id)
     if request.method=="POST":
         name = request.POST.get('name')
@@ -226,8 +227,9 @@ def staff_product_detail(request, id):
         amount = request.POST.get('amount')
         type = request.POST.get('type')
         Product.objects.filter(id=id).update(name=name, price=price, amount=amount, type=type)
+        msg = 'Success!'
     product = Product.objects.get(id=id)
-    return render(request, 'staff/staff_product_detail.html', {'product' : product})
+    return render(request, 'staff/staff_product_detail.html', {'product' : product, 'msg' : msg})
 
 @staff_member_required
 def staff_product_delete(request, id):
