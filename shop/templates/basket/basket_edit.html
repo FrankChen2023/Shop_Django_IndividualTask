@@ -14,7 +14,7 @@
         <p>Basketname: <input type = "text" name = "basketname" value = "{{basket.basketname}}" required="required"></p>
         <p>Consignee: <input type = "text" name = "name" value = "{{basket.name}}" required="required"></p>
         <p>Address: <input type = "text" name = "address" value = "{{basket.address}}" required="required"></p></b>
-        <p><input type="submit" name="Modify">
+        <p><input type="submit" value="Modify">
         Click <a href = "{% url 'shop:basket_delete' id=id %}">delete</a>
          to remove this basket with all items in it.</p>
         </form>

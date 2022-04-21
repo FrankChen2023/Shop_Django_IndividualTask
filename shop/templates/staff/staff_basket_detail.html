@@ -15,7 +15,7 @@
         <p>Address: <input type = "text" name = "address" value="{{basket.address}}" required="required"></p>
         <p>Status: <input type = "text" name = "status" value="{{basket.status}}" required="required"></p>
         <p>Created date: {{basket.created_date}}</p></b>
-        <p><input type="submit" name="Modify">
+        <p><input type="submit" value="Modify">
         <a href = "{% url 'shop:staff_basket_delete' id=basket.id %}">Delete</a></p>
         </form>
         {{msg}}

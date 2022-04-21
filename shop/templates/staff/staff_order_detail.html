@@ -16,7 +16,7 @@
         <p>Amount: <input type = "Integer" name = "amount" value={{item.amount}} step="1" min="1" max={{total_amount}} required="required">({{product.amount}} on sale now)</p>
         <p>Subtotal: £{{item.total_price}}</p>
         <p>Created date: {{item.created_date}}</p></b>
-        <p><input type="submit" name="Modify">
+        <p><input type="submit" value="Modify">
         <a href = "{% url 'shop:staff_order_delete' id=item.id %}">Delete</a></p>
         </form>
         {{msg}}

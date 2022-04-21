@@ -17,7 +17,7 @@
                     <option>Food</option><option>Clothes</option><option>Living</option>
                     <option>Activities</option><option>Common</option></select>
         <p>Created date: {{product.created_date}}</p></b>
-        <p><input type="submit" name="Modify">
+        <p><input type="submit" value="Modify">
         <a href = "{% url 'shop:staff_product_delete' id=product.id %}">Delete</a></p>
         </form>
         {{msg}}

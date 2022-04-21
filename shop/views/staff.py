@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from shop.models import Product, Customer, Basket, Basket_Detail
 from django.contrib.admin.views.decorators import staff_member_required
-from decimal import *
 
 @staff_member_required
 def admin_console(request):
@@ -111,7 +110,7 @@ def staff_order_detail(request, id):
     product = Product.objects.get(id=item.item_id)
     total_amount = item.amount+product.amount
     if request.method=="POST":
-        price = Decimal(request.POST.get('price'))
+        price = float(request.POST.get('price'))
         amount = int(request.POST.get('amount'))
         Product.objects.filter(id=item.item_id).update(amount=total_amount-amount)
         Basket_Detail.objects.filter(id=id).update(price=price, amount=amount, total_price=price*amount)
