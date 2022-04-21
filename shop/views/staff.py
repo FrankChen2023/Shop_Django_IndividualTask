@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from shop.models import Product, Customer, Basket, Basket_Detail
 from django.contrib.admin.views.decorators import staff_member_required
 
@@ -71,6 +72,7 @@ def staff_basket_detail(request, id):
             return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
         Basket.objects.filter(id=id).update(basketname=basketname, name=name, address=address, status=status)
     basket = Basket.objects.get(id=id)
+    msg = 'Success!'
     return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
 
 @staff_member_required
@@ -103,16 +105,18 @@ def staff_order_list(request, username, basketname):
 
 @staff_member_required
 def staff_order_detail(request, id):
+    msg = ''
     item = Basket_Detail.objects.get(id=id)
     product = Product.objects.get(id=item.item_id)
     total_amount = item.amount+product.amount
     if request.method=="POST":
         price = request.POST.get('price')
         amount = request.POST.get('amount')
-        Product.objects.fitler(id=item.item_id).update(amount=total_amount-amount)
+        Product.objects.filter(id=item.item_id).update(amount=total_amount-amount)
         Basket_Detail.objects.filter(id=id).update(price=price, amount=amount)
+        msg = 'Success!'
     item = Basket_Detail.objects.get(id=id)
-    return render(request, 'staff/staff_order_detail.html', {'item' : item, 'product' : product, 'total_amount' : total_amount})
+    return render(request, 'staff/staff_order_detail.html', {'item' : item, 'product' : product, 'total_amount' : total_amount, 'msg' : msg})
 
 @staff_member_required
 def staff_order_delete(request, id):

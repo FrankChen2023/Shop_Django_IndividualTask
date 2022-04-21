@@ -30,7 +30,7 @@
             <td>{{item.amount}}</td>
             <td>£{{item.total_price}}</td>
             <td>{{item.created_date}}</td>
-            <a href = "{% url 'shop:staff_order_detail' id=item.id %}">Edit</a>
+            <td><a href = "{% url 'shop:staff_order_detail' id=item.id %}">Edit</a></td>
         </tr>
         {% endfor %}
         </table>
