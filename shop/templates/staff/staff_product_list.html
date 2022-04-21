@@ -4,7 +4,9 @@
     <head><title>Product list</title></head>
     <body>
         <h1>Product list</h1>
-
+        <p>*This page is product table without search function.</p>
+        <p>*If you want to search a certain product, you may go to <a href = "{% url 'shop:product_search' %}">product search</a> page.</p>
+        <p>*You can also find the entry on the home page, too.</p>
         {% if products %}
         <table border="1" style="text-align:center" width='60%'>
         <tr><th>ID</th><th>Name</th><th>Type</th><th>Price</th><th>Amount</th><th>Date added</th></tr>

@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Customer detail</title>
+</head>
+    <body>
+        <h1>Customer detail</h1>
+        <form method="POST"> 
+        {% csrf_token %}
+        <b>
+        <p>Username: {{customer.username}}</p>
+        <p>Email: <input type = "email" name = "email" value="{{customer.email}}" required="required"></p>
+        <p>Balance: £<input type = "number" name = "balance" value={{customer.balance}} step="0.01" min="0" max="999999.99" required="required"></p>
+        <p>Created date: {{customer.created_date}}</p></b>
+        <p><input type="submit" name="Modify">
+        <a href = "{% url 'shop:staff_customer_delete' id=customer.id %}">Delete</a></p>
+        <p><button onclick="history.back()">Go Back</button></p>
+        </form>
+    </body>
+</html>
+{% endblock %}

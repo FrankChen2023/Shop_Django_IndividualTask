@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Order list</title>
+</head>
+    <body>
+        <h1>Order list</h1>
+        {% if items %}
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>Item name</th><th>Basketname</th><th>Price</th><th>Amount</th><th>Subtotal</th><th>Created Date</th></tr>
+        <tr>
+        {% for item in items %}
+            <td><b>{{item.item}}</b></td>
+            <td>{{item.basketname}}</td>
+            <td>£{{item.price}}</td>
+            <td>{{item.amount}}</td>
+            <td>£{{item.total_price}}</td>
+            <td>{{item.created_date}}</td>
+            <a href = "{% url 'shop:staff_order_detail' id=item.id %}">Edit</a>
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        </table>
+        No order in this basket.
+        {% endif %}
+
+    </body>
+</html>
+{% endblock %}

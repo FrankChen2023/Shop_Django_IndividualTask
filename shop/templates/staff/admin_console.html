@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+    <head><title>Admin Console</title></head>
+    <body>
+        <h1>Admin Console</h1>
+        <p>This is administrator console page, where allows you to check all tables.</p>
+        <p>If you want to check the tables regularly. Please click <a href = "{% url 'shop:staff_customer_list' %}">here</a>.</p>
+        <p>*It also shows the relationship between each list, which means how they are linked.</p>
+        <p>*The level among tables is customer--basket--order, with one product list.</p> 
+        <p>*You are allowed to modify some details. It means admin account owns the right to change tables directly.</p>
+        <p>Or you could check tables singly.</p>
+        <p>
+        <a href = "{% url 'shop:staff_product_list' %}">product list</a> | 
+        <a href = "{% url 'shop:staff_customer_list_total' %}">customer list</a> | 
+        <a href = "{% url 'shop:staff_basket_list_total' %}">basket list</a> | 
+        <a href = "{% url 'shop:staff_order_list_total' %}">order list</a> 
+        </p>
+        <p>*No modification allowed in these pages.</p>
+        <p>*A accurate search function offered.</p>
+        <p>Click <a href = "{% url 'shop:staff_product_add' %}">add product</a> to add more products for sale.</p>
+        <p>Click <a href = "{% url 'shop:staff_product_edit' %}">edit product</a> to edit details of products on sale.</p>
+        
+    </body>
+</html>
+{% endblock %}

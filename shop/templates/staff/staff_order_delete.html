@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Order delete</title>
+</head>
+    <body>
+        <h1>Order delete</h1>
+        <p><b>Username: {{item.username}}</b></p>
+        <p><b>basketname: {{item.basketname}}</b></p>
+        <p><b>Price: {{item.price}}</b></p>
+        <p><b>Amount: {{item.amount}}</b></p>
+        <p><b>Subtotal: {{item.total_price}}</b></p>
+        <p><b>Created date: {{item.created_date}}</b></p>
+        <p>You are deleting an order of someone's basket! Are you absolutely sure?</p>
+        <p>If do so, this order record will be deleted!</p>
+        <p>Please type <b>admin001/{{item.username}}/{{item.basketname}}/order</b> to confirm:
+        <form method="POST"> 
+        {% csrf_token %}
+        <input type = "text" name = 'confirm' required="required">
+        <input type="submit" name="Delete"></form></p>
+        {{msg}}
+    </body>
+</html>
+{% endblock %}

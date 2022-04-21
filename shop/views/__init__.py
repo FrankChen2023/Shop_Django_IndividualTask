@@ -3,3 +3,4 @@ from .products import *
 from .customer import *
 from .basket import *
 from .item import *
+from .staff import *

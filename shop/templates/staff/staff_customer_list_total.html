@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Customer list</title>
+</head>
+    <body>
+        <h1>Customer list</h1>
+        <h2>Search:</h2>
+        <form method = "post">
+            {% csrf_token %}
+            <p>Enter the <b>id number</b> or the <b>username</b> of target account:
+            <input type = "radio" name = "key" value = "id"> ID
+            <input type = "radio" name = "key" value = "username" checked> Username
+            <input type = "text" name = "target">
+            <input type = "submit" value = "Search" >  
+            </p>  
+        </form> 
+
+        <h2>Result: </h2>
+        {% if customers %}
+        <table border="1" style="text-align:center" width='60%'>
+        <<tr><th>ID</th><th>Username</th><th>Email</th><th>Balance</th><th>Created Date</th></tr>
+        <tr>
+        {% for customer in customers %}
+            <td>{{customer.id}}</td>
+            <td><b>{{customer.username}}</b></td>
+            <td>{{customer.email}}</td>
+            <td>£{{customer.balance}}</td>
+            <td>{{customer.created_date}}</td>
+            <a href = "{% url 'shop:staff_customer_detail' id=customer.id %}">Edit</a>
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        </table>
+        No registered account.
+        {% endif %}
+
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Customer delete</title>
+</head>
+    <body>
+        <h1>Customer delete</h1>
+        <b>
+        <p>Username: {{customer.username}}</p>
+        <p>Email: {{customer.email}}</p>
+        <p>Balance: £<{{customer.balance}}</p>
+        <p>Created date: {{customer.created_date}}</p>
+        </b>
+        <p>You are deleting a customer account! Are you absolutely sure?</p>
+        <p>If do so, this account will not be able to login so far, and all baskets and orders created under it will be deleted!</p>
+        <p>Please type <b>admin001/{{customer.username}}</b> to confirm:
+        <form method="POST"> 
+        {% csrf_token %}
+        <input type = "text" name = 'confirm' required="required">
+        <input type="submit" name="Delete"></form></p>
+        {{msg}}
+    </body>
+</html>
+{% endblock %}

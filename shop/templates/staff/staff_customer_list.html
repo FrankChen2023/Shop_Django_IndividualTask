@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Customer list</title>
+</head>
+    <body>
+        <h1>Customer list</h1>
+        {% if customers %}
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>ID</th><th>Username</th><th>Email</th><th>Balance</th><th>Created Date</th></tr>
+        <tr>
+        {% for customer in customers %}
+            <td>{{customer.id}}</td>
+            <td><b><a href = "{% url 'shop:staff_basket_list' username=username %}">{{customer.username}}</a></b></td>
+            <td>{{customer.email}}</td>
+            <td>£{{customer.balance}}</td>
+            <td>{{customer.created_date}}</td>
+            <a href = "{% url 'shop:staff_customer_detail' id=customer.id %}">Edit</a>
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        </table>
+        No registered account.
+        {% endif %}
+
+    </body>
+</html>
+{% endblock %}

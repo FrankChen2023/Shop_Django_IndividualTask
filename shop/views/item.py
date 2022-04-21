@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from shop.models import Product, Basket, Basket_Detail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.admin.views.decorators import staff_member_required
 
 @login_required
 def item_add(request, basketname):
@@ -22,11 +21,6 @@ def item_add(request, basketname):
         except:
             pass
     return render(request, 'item/item_add.html', {'products' : products, 'basketname' : basketname})
-
-@staff_member_required
-def item_list(request):
-    items = Basket_Detail.objects.all()
-    return render(request, 'item/item_list.html', {'items' : items})
 
 @login_required
 def item_detail(request, basketname, id):

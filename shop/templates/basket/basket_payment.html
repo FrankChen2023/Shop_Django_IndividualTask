@@ -8,7 +8,7 @@
         <h1>Basket payment</h1>
         <p>Please check your order:</p>
         <table border="1" style="text-align:center" width='60%'>
-        <tr><th>Item name</th><th>Price(single)</th><th>Amount</th><th>Price(total)</th><th>Date added</th></tr>
+        <tr><th>Item name</th><th>Price</th><th>Amount</th><th>Subtotal</th><th>Date added</th></tr>
         <tr>
         {% for item in items %}
             <td>{{item.item}}</td>

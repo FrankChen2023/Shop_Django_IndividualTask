@@ -1,0 +1,41 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<html>
+<head>
+    <title>Basket list</title>
+</head>
+    <body>
+        <h1>Basket list</h1>
+        <h2>Search:</h2>
+        <form method = "post">
+            {% csrf_token %}
+            <p>Enter the <b>username</b> of target account:
+            <input type = "text" name = "username">
+            <input type = "submit" value = "Search" >  
+            </p>  
+        </form> 
+
+        <h2>Result: </h2>
+        {% if baskets %}
+        <table border="1" style="text-align:center" width='60%'>
+        <tr><th>Username</th><th>Basketname</th><th>Consignee</th><th>Address</th><th>Created Date</th></tr>
+        <tr>
+        {% for basket in baskets %}
+            <td>{{basket.username}}</td>
+            <td><b><a href = "{% url 'shop:staff_order_list' username=basket.username basketname=basket.basketname %}">{{basket.basketname}}</a></b></td>
+            <td>{{basket.name}}</td>
+            <td>{{basket.address}}</td>
+            <td>{{basket.status}}</td>
+            <td>{{basket.created_date}}</td>
+            <a href = "{% url 'shop:staff_basket_detail' id=basket.id %}">Edit</a>
+        </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        </table>
+        No basket created by this customer.
+        {% endif %}
+
+    </body>
+</html>
+{% endblock %}

@@ -1,24 +1,5 @@
 from django.shortcuts import render
 from shop.models import Product
-from django.contrib.admin.views.decorators import staff_member_required
-
-@staff_member_required
-def product_list(request):
-    products = Product.objects.all()
-    return render(request, 'product/product_list.html', {'products' : products})
-
-
-@staff_member_required
-def product_add(request):
-    product = None
-    if request.method=="POST":
-        name = request.POST.get('name','')
-        price = request.POST.get('price','')
-        amount = request.POST.get('amount','')
-        type = request.POST.get('type','')
-        product = Product.objects.create(name=name, price=price, amount=amount, type=type)
-        product.save()
-    return render(request, 'product/product_add.html', {'product' : product})
 
 def product_search(request):
     products = Product.objects.all()
