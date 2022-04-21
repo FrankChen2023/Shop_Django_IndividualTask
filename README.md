@@ -11,3 +11,5 @@
 **18th April Complete Version:44e7a76** : A url link represents success page with auto-jump function added after creating new basket.  
 **18th April Complete Version:640e09c** : Add filter with type condition to item_add and product_search pages.  
 **18th April Complete Version:0e7063b** : Basket status, edit and delete functions added.  
+**19th April Complete Version:e24b42e** : Item edit function added.  
+**19th April Complete Version:b99046f** : Payment function added, with total cost caiculated and posted automatically.  
