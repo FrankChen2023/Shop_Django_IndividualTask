@@ -112,9 +112,9 @@ def staff_order_delete(request, id):
     if request.method=='POST':
         confirm = request.POST.get('confirm')
         if judge==confirm:
-                product = Product.objects.get(id=item.item_id)
-                Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
-                Basket_Detail.objects.filter(id=id).delete()
+            product = Product.objects.get(id=item.item_id)
+            Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
+            Basket_Detail.objects.filter(id=id).delete()
             return redirect('/staff_order_delete_success/', username=item.username, basketname=item.basketname)
         else:
             msg = 'Wrong type! Please confirm and type again.'
