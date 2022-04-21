@@ -110,7 +110,7 @@ def staff_order_detail(request, id):
     product = Product.objects.get(id=item.item_id)
     total_amount = item.amount+product.amount
     if request.method=="POST":
-        price = request.POST.get('price')
+        price = Decimal(request.POST.get('price'))
         amount = int(request.POST.get('amount'))
         Product.objects.filter(id=item.item_id).update(amount=total_amount-amount)
         Basket_Detail.objects.filter(id=id).update(price=price, amount=amount, total_price=price*amount)
