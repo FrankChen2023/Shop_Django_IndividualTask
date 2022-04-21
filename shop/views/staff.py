@@ -89,7 +89,7 @@ def staff_basket_delete(request, id):
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
             Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname).delete()
             Basket.objects.filter(username=basket.username, basketname=basket.basketname).delete()
-            return redirect('/staff_basket_delete_success/', {'username' : basket.username})
+            return redirect('shop:staff_basket_delete_success', username=basket.username})
         else:
             msg = 'Wrong type! Please confirm and type again.'
     return render(request, 'staff/staff_basket_delete.html', {'basket' : basket, 'msg' : msg})
@@ -113,7 +113,9 @@ def staff_order_detail(request, id):
         price = request.POST.get('price')
         amount = int(request.POST.get('amount'))
         Product.objects.filter(id=item.item_id).update(amount=total_amount-amount)
-        Basket_Detail.objects.filter(id=id).update(price=price, amount=amount, total_price=price*amount)
+        Basket_Detail.objects.filter(id=id).update(price=price, amount=amount)
+        item = Basket_Detail.objects.get(id=id)
+        Basket_Detail.objects.filter(id=id).update(total_price=item.price*item.amount)
         msg = 'Success!'
     item = Basket_Detail.objects.get(id=id)
     return render(request, 'staff/staff_order_detail.html', {'item' : item, 'product' : product, 'total_amount' : total_amount, 'msg' : msg})
@@ -129,7 +131,7 @@ def staff_order_delete(request, id):
             product = Product.objects.get(id=item.item_id)
             Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
             Basket_Detail.objects.filter(id=id).delete()
-            return redirect('/staff_order_delete_success/', username=item.username, basketname=item.basketname)
+            return redirect('shop:staff_order_delete_success', username=item.username, basketname=item.basketname)
         else:
             msg = 'Wrong type! Please confirm and type again.'
     return render(request, 'staff/staff_order_delete.html', {'item' : item, 'msg' : msg})
