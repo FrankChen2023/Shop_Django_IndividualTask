@@ -33,7 +33,7 @@
             <td>{{product.amount}}</td>
             <td>{{product.created_date}}</td>
         </tr>
-        <a href = "{% url 'shop:staff_product_detail' id=product.id %}">Edit</a>
+        <a href = "{% url 'shop:staff_product_detail' id=1 %}">Edit</a>
         {% endfor %}
         </table>
         {% else %}
