@@ -12,4 +12,5 @@
 **18th April Complete Version:640e09c** : Add filter with type condition to item_add and product_search pages.  
 **18th April Complete Version:0e7063b** : Basket status, edit and delete functions added.  
 **19th April Complete Version:e24b42e** : Item edit function added.  
-**19th April Complete Version:b99046f** : Payment function added, with total cost caiculated and posted automatically.  
+**19th April Complete Version:b99046f** : Payment function added, with total cost caiculated and posted automatically.   
+**19th April Complete Version:9e1f3bb** : Admin functions added, including checking all tables in two different ways, modifying contents, deleting rows, adding new products and so on.  
