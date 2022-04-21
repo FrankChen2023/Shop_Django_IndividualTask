@@ -118,6 +118,7 @@ def staff_order_detail(request, id):
         Basket_Detail.objects.filter(id=id).update(total_price=item.price*item.amount)
         msg = 'Success!'
     item = Basket_Detail.objects.get(id=id)
+    product = Product.objects.get(id=item.item_id)
     return render(request, 'staff/staff_order_detail.html', {'item' : item, 'product' : product, 'total_amount' : total_amount, 'msg' : msg})
 
 @staff_member_required
