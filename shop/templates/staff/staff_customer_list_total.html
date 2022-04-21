@@ -28,8 +28,8 @@
             <td>{{customer.email}}</td>
             <td>£{{customer.balance}}</td>
             <td>{{customer.created_date}}</td>
-            <a href = "{% url 'shop:staff_customer_detail' id=customer.id %}">Edit</a>
         </tr>
+        <a href = "{% url 'shop:staff_customer_detail' id=customer.id %}">Edit</a>
         {% endfor %}
         </table>
         {% else %}

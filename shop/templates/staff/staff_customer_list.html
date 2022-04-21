@@ -12,12 +12,12 @@
         <tr>
         {% for customer in customers %}
             <td>{{customer.id}}</td>
-            <td><b><a href = "{% url 'shop:staff_basket_list' username=username %}">{{customer.username}}</a></b></td>
+            <td><b><a href = "{% url 'shop:staff_basket_list' username=customer.username %}">{{customer.username}}</a></b></td>
             <td>{{customer.email}}</td>
             <td>£{{customer.balance}}</td>
             <td>{{customer.created_date}}</td>
-            <a href = "{% url 'shop:staff_customer_detail' id=1 %}">Edit</a>
         </tr>
+        <a href = "{% url 'shop:staff_customer_detail' id=customer.id %}">Edit</a>
         {% endfor %}
         </table>
         {% else %}

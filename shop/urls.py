@@ -43,5 +43,5 @@ urlpatterns = [
         path('staff_order_list_total/', views.staff.staff_order_list_total, name='staff_order_list_total'),
         path('staff_product_add/', views.staff.staff_product_add, name='staff_product_add'),
         path('staff_product_edit/', views.staff.staff_product_edit, name='staff_product_edit'),
-        path('staff_product_detail/', views.staff.staff_product_detail, name='staff_product_detail'),
+        path('staff_product_detail/<int:id>', views.staff.staff_product_detail, name='staff_product_detail'),
 ]
