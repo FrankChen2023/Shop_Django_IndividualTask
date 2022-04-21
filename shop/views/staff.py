@@ -89,7 +89,7 @@ def staff_basket_delete(request, id):
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
             Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname).delete()
             Basket.objects.filter(username=basket.username, basketname=basket.basketname).delete()
-            return redirect('shop:staff_basket_delete_success', username=basket.username})
+            return redirect('shop:staff_basket_delete_success', username=basket.username)
         else:
             msg = 'Wrong type! Please confirm and type again.'
     return render(request, 'staff/staff_basket_delete.html', {'basket' : basket, 'msg' : msg})
