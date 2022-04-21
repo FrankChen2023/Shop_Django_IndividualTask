@@ -12,7 +12,7 @@
         <p>Username: {{item.username}}</p>
         <p>Basketname: {{item.basketname}}</p>
         <p>Item name: {{item.item}}</p>
-        <p>Price: £ <input type = "number" name = "price" value={{item.price}} required="required"></p>
+        <p>Price: £ <input type = "number" name = "price" value={{item.price}} step="0.01" min="0" max="999999.99" required="required"></p>
         <p>Amount: <input type = "Integer" name = "amount" value={{item.amount}} step="1" min="1" max={{total_amount}} required="required">({{product.amount}} on sale now)</p>
         <p>Subtotal: £{{item.total_price}}</p>
         <p>Created date: {{item.created_date}}</p></b>
