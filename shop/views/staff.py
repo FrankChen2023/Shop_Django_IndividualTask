@@ -13,13 +13,15 @@ def staff_customer_list(request):
 
 @staff_member_required
 def staff_customer_detail(request, id):
+    msg = ''
     customer = Customer.objects.get(id=id)
     if request.method=="POST":
         email = request.POST.get('email')
         balance = request.POST.get('balance')
         Customer.objects.filter(id=id).update(email=email, balance=balance)
+        msg = 'Success!'
     customer = Customer.objects.get(id=id)
-    return render(request, 'staff/staff_customer_detail.html', {'customer' : customer})
+    return render(request, 'staff/staff_customer_detail.html', {'customer' : customer, 'msg' : msg})
 
 @staff_member_required
 def staff_customer_delete(request, id):
@@ -29,12 +31,12 @@ def staff_customer_delete(request, id):
     if request.method=='POST':
         confirm = request.POST.get('confirm')
         if judge==confirm:
-            items = Basket_Detail.objects.filer(username=customer.username)
+            items = Basket_Detail.objects.filter(username=customer.username)
             for item in items:
                 product = Product.objects.get(id=item.item_id)
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
-            Basket_Detail.objects.filer(username=customer.username).delete()
-            Basket.objects.filer(username=customer.username).delete()
+            Basket_Detail.objects.filter(username=customer.username).delete()
+            Basket.objects.filter(username=customer.username).delete()
             User.objects.get(username=customer.username).delete()
             Customer.objects.get(username=customer.username).delete()
             return redirect('/staff_customer_delete_success/')
@@ -53,15 +55,23 @@ def staff_basket_list(request, username):
 
 @staff_member_required
 def staff_basket_detail(request, id):
+    msg = ''
     basket = Basket.objects.get(id=id)
     if request.method=="POST":
         basketname = request.POST.get('basketname')
+        repeat = Basket.objects.filter(username=basket.username, basketname=basketname)
         name = request.POST.get('name')
         address = request.POST.get('address')
         status = request.POST.get('status')
+        if status != 'paid' and status != 'unpaid':
+            msg = 'Wrong! Status value can only be "paid" or "unpaid".'
+            return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
+        if basketname!=basket.basketname and repeat:
+            msg = 'Wrong! The basketname is repeated in the customer baskets.'
+            return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
         Basket.objects.filter(id=id).update(basketname=basketname, name=name, address=address, status=status)
     basket = Basket.objects.get(id=id)
-    return render(request, 'staff/staff_basket_detail.html', {'basket' : basket})
+    return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
 
 @staff_member_required
 def staff_basket_delete(request, id):
@@ -71,11 +81,11 @@ def staff_basket_delete(request, id):
     if request.method=='POST':
         confirm = request.POST.get('confirm')
         if judge==confirm:
-            items = Basket_Detail.objects.filer(username=basket.username, basketname=basket.basketname)
+            items = Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname)
             for item in items:
                 product = Product.objects.get(id=item.item_id)
                 Product.objects.filter(id=item.item_id).update(amount=product.amount+item.amount)
-            Basket_Detail.objects.filer(username=basket.username, basketname=basket.basketname).delete()
+            Basket_Detail.objects.filter(username=basket.username, basketname=basket.basketname).delete()
             Basket.objects.filter(username=basket.username, basketname=basket.basketname).delete()
             return redirect('/staff_basket_delete_success/', username=basket.username)
         else:
@@ -99,7 +109,7 @@ def staff_order_detail(request, id):
     if request.method=="POST":
         price = request.POST.get('price')
         amount = request.POST.get('amount')
-        Product.objects.filer(id=item.item_id).update(amount=total_amount-amount)
+        Product.objects.fitler(id=item.item_id).update(amount=total_amount-amount)
         Basket_Detail.objects.filter(id=id).update(price=price, amount=amount)
     item = Basket_Detail.objects.get(id=id)
     return render(request, 'staff/staff_order_detail.html', {'item' : item, 'product' : product, 'total_amount' : total_amount})

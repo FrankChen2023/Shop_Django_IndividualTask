@@ -9,6 +9,7 @@ class Command(BaseCommand):
     help = 'Load data into the tables'
 
     def handle(self, *args, **options):
-        Customer.objects.create(username='Frank.C', email='123@123.com', balance=10000).save()
+        User.objects.create_user(username='Zhaoqi.C', password='123', email='543315720@qq.com').save()
+        Customer.objects.create(username='Zhaoqi.C', email='543315720@qq.com', balance=10000).save()
 
 

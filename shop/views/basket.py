@@ -14,7 +14,7 @@ def basket_add(request):
         basketname = request.POST.get('basketname', '')
         name = request.POST.get('name', '')
         address = request.POST.get('address', '')
-        repeat = Basket.objects.filter(basketname=basketname)
+        repeat = Basket.objects.filter(username=username, basketname=basketname)
         if repeat:
             msg = 'Wrong! The basketname has existed in your baskets, please try another name!'
         elif '/' in basketname:
@@ -44,7 +44,7 @@ def basket_edit(request, id):
         basketname = request.POST.get('basketname', '')
         name = request.POST.get('name', '')
         address = request.POST.get('address', '')
-        repeat = Basket.objects.filter(basketname=basketname)
+        repeat = Basket.objects.filter(username=basket.username, basketname=basketname)
         if basketname==basket.basketname:
             Basket.objects.filter(id=id).update(name=name, address=address)
             Basket_Detail.objects.filter(username=username, basketname=basket.basketname).update(name=name, address=address)

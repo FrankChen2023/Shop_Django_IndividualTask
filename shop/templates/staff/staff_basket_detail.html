@@ -11,13 +11,14 @@
         <b>
         <p>Username: {{basket.username}}</p>
         <p>Basketname: <input type = "text" name = "basketname" value="{{basket.basketname}}" required="required"></p>
-        <p>Consignee: <input type = "text" name = "name" value={{basket.name}} required="required"></p>
-        <p>Address: <input type = "text" name = "address" value={{basket.address}} required="required"></p>
-        <p>Status: <select name= "status" value={{basket.status}}><option>paid</option><option>unpaid</option></select></p>
+        <p>Consignee: <input type = "text" name = "name" value="{{basket.name}}" required="required"></p>
+        <p>Address: <input type = "text" name = "address" value="{{basket.address}}" required="required"></p>
+        <p>Status: <input type = "text" name = "status" value="{{basket.status}}" required="required"></p>
         <p>Created date: {{basket.created_date}}</p></b>
         <p><input type="submit" name="Modify">
         <a href = "{% url 'shop:staff_basket_delete' id=basket.id %}">Delete</a></p>
         </form>
+        {{msg}}
     </body>
 </html>
 {% endblock %}
