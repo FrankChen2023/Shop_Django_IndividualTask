@@ -70,6 +70,9 @@ def staff_basket_detail(request, id):
         if basketname!=basket.basketname and repeat:
             msg = 'Wrong! The basketname is repeated in the customer baskets.'
             return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
+        if '/' in basketname:
+            msg = 'Wrong! The basketname connot contain character "/".'
+            return render(request, 'staff/staff_basket_detail.html', {'basket' : basket, 'msg' : msg})
         Basket.objects.filter(id=id).update(basketname=basketname, name=name, address=address, status=status)
         msg = 'Success!'
     basket = Basket.objects.get(id=id)
