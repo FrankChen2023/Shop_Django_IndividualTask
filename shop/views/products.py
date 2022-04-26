@@ -17,9 +17,9 @@ def product_search(request):
             if key=='name' and type!='All':
                 products = Product.objects.filter(type=type, name__icontains=target)
             if sort=='Upward':
-                products = products.objects.order_by('price')
+                products = Product.objects.order_by('price')
             if sort=='Backward':
-                products = products.objects.order_by(-'price')
+                products = Product.objects.order_by(-'price')
         except:
             pass
     return render(request, 'product/product_search.html', {'products' : products})
