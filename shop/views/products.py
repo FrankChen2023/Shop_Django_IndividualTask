@@ -8,6 +8,7 @@ def product_search(request):
         try:
             key = request.POST.get('key', 'name')
             type = request.POST.get('type', 'All')
+            sort  = request.POST.get('sort', 'Unsort')
             target = request.POST.get('target', '')
             if key=='id':
                 products = Product.objects.filter(id=target)
@@ -15,6 +16,10 @@ def product_search(request):
                 products = Product.objects.filter(name__icontains=target)
             if key=='name' and type!='All':
                 products = Product.objects.filter(type=type, name__icontains=target)
+            if sort=='Upward':
+                products.objects.order_by('price')
+            if sort=='Backward':
+                products.objects.order_by(-'price')
         except:
             pass
     return render(request, 'product/product_search.html', {'products' : products})

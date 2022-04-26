@@ -11,10 +11,12 @@
             {% csrf_token %}
             <p>Enter the id number or the name of target product:
             <input type = "radio" name = "key" value = "id"> ID
-            <input type = "radio" name = "key" value = "name" checked> Name
-                 <select name= "type">
-                    <option>All</option><option>Food</option><option>Clothes</option><option>Living</option>
-                    <option>Activities</option><option>Common</option></select>
+            <input type = "radio" name = "key" value = "name" checked> Name 
+            <select name= "type">
+                <option>All</option><option>Food</option><option>Clothes</option><option>Living</option>
+                <option>Activities</option><option>Common</option></select> 
+            <select name= "sort">
+                <option>Unsort</option><option>Upward</option><option>Backward</option>></select>
             <input type = "text" name = "target">
             <input type = "submit" value = "Search" >  
             </p>  
