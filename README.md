@@ -15,3 +15,5 @@
 **19th April Complete Version:b99046f** : Payment function added, with total cost caiculated and posted automatically.   
 **21st April Complete Version:9e1f3bb** : Admin functions added, including checking all tables in two different ways, modifying contents, deleting rows, adding new products and so on.  
 **21st April Complete Version:5999cf3** : Sorting data by upward and backward functions added.  
+
+### :  
