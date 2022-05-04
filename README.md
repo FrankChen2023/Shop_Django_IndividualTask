@@ -16,11 +16,19 @@
 **21st April Complete Version:9e1f3bb** : Admin functions added, including checking all tables in two different ways, modifying contents, deleting rows, adding new products and so on.  
 **21st April Complete Version:5999cf3** : Sorting data by upward and backward functions added.  
 
-<<<<<<< HEAD
-### :  
-=======
+
+### Application Introduction:  
 ## Amazing Shopping Website Application (created by Frank Chen) 
 This application achieves seearching items for guests, purchasing items for customers, managed website for administrators.  
 This application 41 pages (urls)
+
 #### General Functions:  
->>>>>>> aba7104ec628078fddd4d3a19ad0e8c75a32d9fb
+**1.Registration / Login / Logout system (views.general, 6 urls and functions including success jump page)**: Whenever users signup login or logout, a automatical jump page will perform to report that the operate of user works.  
+**2.Index page (view.general, 1 url and function)**: A home page including the link to product_search page, works for guests (browse only).    
+
+
+#### Customer Functions: 
+**1.Balance system (view.customer, 1 url and function)**: The system offer £10000 for every registration account, and the balance page allows users to check thier funding.  
+**2.Basket system - add basket (views.basket_add, 2 urls and function including success jump page)**: One user could create many baskets, which means many orders (in fact many items could be added in one order).  
+**3.
+
