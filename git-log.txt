@@ -1,0 +1,250 @@
+*   6c8f8c6 : test add
+|\  
+| * aba7104 : Update README.md
+* | c16ec1a : test add
+|/  
+* 7317977 : Sort function added
+*   9da19af : Merge branch 'main' of github.com:czq543315720/Shop_Django_IndividualTask into main
+|\  
+| * 5999cf3 : Update README.md
+| * 9ea9f23 : Update README.md
+* | c0dcde7 : Sort function added
+* | c9fade6 : Sort function added
+* | 6508f5e : Sort function added
+* | e0022d1 : Sort function added
+* | 5261f28 : Sort function added
+* | 3370981 : Sort function added
+|/  
+*   a78ef83 : Merge branch 'main' of github.com:czq543315720/Shop_Django_IndividualTask into main
+|\  
+| * 459bc98 : Update README.md
+| * b4edb6d : Update README.md
+* | 9e1f3bb : admin functions added
+* | 75e9dee : admin functions added
+* | d380f41 : admin functions added
+* | 186e925 : admin functions added
+* | ddd87c9 : admin functions added
+* | 27bd4de : admin functions added
+* | b55e2a2 : admin functions added
+* | 1593231 : admin functions added
+* | b7605de : admin functions added
+* | aabfce7 : admin functions added
+* | 66f3707 : admin functions added
+* | 933bd38 : admin functions added
+* | 5f0dfd1 : admin functions added
+* | dea6d22 : admin functions added
+* | 57fdd2d : admin functions added
+* | 9a1104c : admin functions added
+* | 8a306c2 : admin functions added
+* | 43fe631 : admin functions added
+* | 24e8663 : admin functions added
+* | b8759ec : admin functions added
+* | afd0f1f : admin functions added
+* | 4b7410c : admin functions added
+* | 2e2803c : admin functions added
+* | 572d0e2 : admin functions added
+* | 0bab5b7 : admin functions added
+* | bc78239 : admin functions added
+* | 750c56c : admin functions added
+* | 99552c4 : admin functions added
+|/  
+*   ad15cdb : Merge branch 'main' of github.com:czq543315720/Shop_Django_IndividualTask into main
+|\  
+| * f10e884 : Update README.md
+* | b99046f : payment function added
+* | 79b8d1e : payment function added
+* | fe5e980 : payment function added
+* | f94cfce : payment function added
+* | c0daf1b : payment function added
+* | f58496b : payment function added
+* | cec3ac2 : payment function added
+* | bc7ce95 : payment function added
+* | 5a4d58d : payment function added
+* | 8f791c1 : sum of cost function added
+* | 48597db : sum of cost function added
+* | e24b42e : item edit function added
+* | 016e26b : item edit function added
+* | 224a396 : item edit function added
+* | cd8729f : item edit function added
+* | 16f2e97 : item edit function added
+* | 0f0cec6 : item edit function added
+* | 05ecae3 : item edit function added
+* | 4d8c5a3 : item edit function added
+* | b618ec0 : item edit function added
+* | b75db47 : item edit function added
+* | 2828ff0 : item edit function added
+* | a3a3b82 : item edit function added
+* | 52f5293 : item edit function added
+|/  
+*   8df2e9a : Merge branch 'main' of github.com:czq543315720/Shop_Django_IndividualTask into main
+|\  
+| * fa8c72c : Update README.md
+| * 27c281c : Update README.md
+* | 0e7063b : basket delete function added
+* | 2388516 : basket delete function added
+* | 0e22f45 : basket delete function added
+* | b252804 : basket delete function added
+* | f934baa : basket delete function added
+* | 5020101 : basket delete function added
+* | a554d4d : basket delete function added
+* | 9bfc711 : basket delete function added
+* | 2f22f3a : basket edit function added
+* | 29b65bc : basket edit function added
+* | e45e73d : basket edit function added
+* | 8f07ea7 : basket edit function added
+* | 6c197dc : basket edit function added
+* | 07e62db : basket edit function added
+* | 87a1d90 : basket edit function added
+* | d937c03 : basket edit function added
+* | 7e71c0d : basket edit function added
+* | cb4cf2d : Add payment status onto basket
+* | 5189287 : Add payment status onto basket
+* | 5538e2a : Add payment status onto basket
+* | d3caf81 : Add payment status onto basket
+* | 5bb8cc4 : Add payment status onto basket
+* | 39d4739 : Add payment status onto basket
+* | fe3250c : Add payment status onto basket
+* | c681f7d : Add payment status onto basket
+|/  
+*   00d4fdc : Merge branch 'main' of github.com:czq543315720/Shop_Django_IndividualTask into main
+|\  
+| * 5480dbe : Update README.md
+| * bb728bf : Update README.md
+| * 0bc0667 : Update README.md
+* | 640e09c : Type condition in search added
+* | 2867e82 : Type condition in search added
+* | 3d959e9 : A initial customer account created
+* | 44e7a76 : basket added success page
+* | fba00e1 : basket added success page
+* | 01374bf : basket added success page
+* | aa15319 : basket added success page
+* | 6203e22 : basket added success page
+* | f3e8dd1 : basket added success page
+* | 60a626b : basket added success page
+|/  
+*   755093a : basket detail function added
+|\  
+| * 996cd8b : Update README.md
+| * 3454958 : Update README.md
+* | 653e101 : basket detail function added
+* | e03122d : basket detail function added
+* | 132282e : item pick function added
+* | 9a81bd6 : item pick function added
+* | 8d4b1d3 : item pick function added
+* | eb2ac11 : item pick function added
+* | 539e995 : item pick function added
+* | e1dae8e : item pick function added
+* | e7d4068 : item pick function added
+* | b9879b6 : item pick function added
+* | f0ebb47 : item pick function added
+* | cf8976f : item pick function added
+* | 22bbfc6 : item pick function added
+* | 7bcfc54 : item pick function added
+* | 27cc5e5 : item pick function added
+* | 2f9e2ac : item pick function added
+* | 914dba9 : item pick function added
+* | 9f89b23 : item pick function added
+* | 343c337 : item pick function added
+* | 10135a2 : item pick function added
+* | ceeaaa5 : item pick function added
+* | ccf82c2 : item pick function added
+* | 752e337 : item pick function added
+* | 2836b7f : item pick function added
+* | 7c6844d : item pick function added
+* | 18f8ce0 : item pick function added
+* | 4fe553a : item pick function added
+* | a6fc058 : item pick function added
+* | d46d6ce : item pick function added
+* | 6ce4a85 : item pick function added
+* | 01e0e22 : item pick function added
+* | 1a409d3 : item pick function added
+* | 0be68e5 : item pick function added
+* | a322bcf : item pick function added
+* | 0f1ba5c : item pick function added
+* | ad8a874 : item pick function added
+* | da81992 : item pick function added
+* | ca8cbea : item pick function added
+* | 694ad59 : item pick function added
+* | 65459b2 : item pick function added
+* | d7bd5b2 : item pick function added
+* | 7de0296 : item pick function added
+* | a0bc93d : item pick function added
+* | 9e1ed39 : item pick function added
+* | 030ca00 : item pick function added
+|/  
+*   6cb8b77 : Login Logout basket creatation skip pages added
+|\  
+| * 999f389 : Update README.md
+| * ecf1b82 : Update README.md
+* | bb0e3f9 : Login Logout basket creatation skip pages added
+* | fcb9809 : basket creation function added
+* | 8f54ea6 : basket creation function added
+* | 02fe86e : basket creation function added
+* | 2e34265 : basket creation function added
+* | f1ec4f0 : basket creation function added
+* | 0a68a23 : basket creation function added
+* | 2593858 : basket creation function added
+* | e5a4331 : basket creation function added
+* | 63f353a : basket creation function added
+* | 510c27f : balance function added
+* | 31d081b : balance function added
+* | d76de44 : balance function added
+* | 751f864 : balance function added
+* | 05aed31 : balance function added
+|/  
+* fc8cceb : add login logout and signup function
+* fe69b76 : add login logout and signup function
+* d4b7f6e : add login logout and signup function
+* fb6e292 : add login logout and signup function
+* a5b2a25 : add login logout and signup function
+* 24d2f79 : add login logout and signup function
+* 4fdf485 : add login logout and signup function
+* 56d5dc4 : add login logout and signup function
+* cd43702 : add login logout and signup function
+* 8c40035 : add login logout and signup function
+* 0fc2fb1 : add login logout and signup function
+* 565d583 : add login logout and signup function
+* 57c5cb2 : add login logout and signup function
+* 940a224 : add login logout and signup function
+* 5a075bc : add login logout and signup function
+* 1831038 : add login logout and signup function
+* 6500ede : add base page
+* 1ca0969 : add base page
+* 9c189a3 : add base page
+* a965396 : add base page
+* 4f49d6d : add base page
+* 0d9c27c : index page
+* 0e39a22 : add product search function
+* 9adfcce : add product search function
+* 0eb8cc8 : add product search function
+* 1f73e2b : add product search function
+* 9d9dd6b : add product search function
+* d3a71b0 : add product search function
+* 5367467 : add product search function
+*   1d64744 : add basic product
+|\  
+| * d75e014 : Update README.md
+| * 81b63d7 : Update README.md
+* | 720f83b : add basic product
+* | 9c1c3fa : add basic product
+|/  
+* da4b3a9 : First commit
+* c448fc5 : First commit
+* 319a045 : First commit
+* 2dfac15 : First commit
+* 4c27fc5 : First commit
+* 39d89cc : First commit
+* 155156b : First commit
+* 6abdef8 : First commit
+* 2db4b2c : First commit
+* ba582cd : First commit
+* c3ad741 : First commit
+* 98fa22b : First commit
+* fa00f83 : First commit
+* f2e3f3f : First commit
+* c402733 : First commit
+* aa921e6 : First commit
+* e18b254 : First commit
+* 0aec947 : First commit
+* 6f31643 : First commit
+* 2f6ec40 : Initial commit
